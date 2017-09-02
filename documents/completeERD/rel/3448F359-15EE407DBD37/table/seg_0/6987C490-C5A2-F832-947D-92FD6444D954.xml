@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6987C490-C5A2-F832-947D-92FD6444D954" name="game">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:23:03 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_4</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="game_id" id="A6D82B8C-5EFE-682B-7CAF-D123B2CA5A53">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_name" id="5CD42BDB-6BB1-7718-ED3B-702FD21AECE8">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_password" id="DC13C9D3-14CE-0E45-AECB-3BB4393BA594">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="players" id="2B6CF8A4-2414-F1C5-2BCE-F7E80B3957FA">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="turn" id="7DAAFB31-AE57-2FD4-C4EE-6BBEE63A1340">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="time_limit" id="9E707E8E-D0FC-B1D3-BB0E-CA5D45B6BE73">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_start_date" id="0E0246EC-9EFF-EEAD-06A7-7A3673492EBF">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_resolved" id="5FACAF56-87C3-66A2-ACF7-2013472F7451">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT046</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_won" id="907C3E3B-371F-0124-9AF3-BDFABD1D85A9">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_lost" id="A1018E5A-617E-4ADB-8429-A6EB401B7C5A">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1CA2D864-557B-2F41-194F-BC5955E5D719" name="game_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:24:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A6D82B8C-5EFE-682B-7CAF-D123B2CA5A53"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5E6026AF-082B-1F4F-9204-01C511D3D929" name="game__UN">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:53:16 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5CD42BDB-6BB1-7718-ED3B-702FD21AECE8"/>
+<colUsage columnID="DC13C9D3-14CE-0E45-AECB-3BB4393BA594"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

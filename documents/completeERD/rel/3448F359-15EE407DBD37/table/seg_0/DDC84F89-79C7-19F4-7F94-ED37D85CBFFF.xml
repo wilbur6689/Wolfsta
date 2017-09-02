@@ -1,0 +1,57 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DDC84F89-79C7-19F4-7F94-ED37D85CBFFF" name="friend_lookup">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:31:10 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="friendship_id" id="A442CAFF-8DFD-407D-D550-53AA1CFB4703">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:32:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_id_1" id="14BABB87-B05B-BA33-E6D3-3553DC0C3916">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:32:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_id_2" id="A1ABE09C-7ACC-6953-01AC-FA4FC4CE0D41">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:32:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="14158486-592E-4DC3-6E1A-48E891C1A79C" name="friend_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:32:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A442CAFF-8DFD-407D-D550-53AA1CFB4703"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

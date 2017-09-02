@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="22B8FA1F-C349-1360-2763-B75B4D0F36A5" name="reward">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:29:53 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="reward_id" id="C892E91C-698A-443C-301C-DBB74B17E853">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:30:19 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_id" id="24B4A3C7-BE3A-2511-0CFD-100580809B72">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:30:41 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BD6B7152-DE55-361C-9A91-83BE53542696" referredColumn="4DC8FE3B-4AC6-E02F-66BE-A41A7B61F8A3"/>
+</associations>
+</Column>
+<Column name="reward_rule" id="3F2AA93A-F29D-ADE3-DB4E-547E6F5F9C12">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 21:07:35 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7AFFEC94-537C-D745-DB67-C61AD435FE1C" name="reward_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:30:19 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C892E91C-698A-443C-301C-DBB74B17E853"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="828578F1-53EE-8F96-2C8A-ADA65C335846" name="reward_user_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:30:41 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24B4A3C7-BE3A-2511-0CFD-100580809B72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

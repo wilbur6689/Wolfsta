@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="688D751A-26DA-F171-3438-5E06D6D339CF" containerWithKeyObject="B2BDF521-9D03-937B-F968-3BC7DD85ECBD" localFKIndex="BACF455D-9754-C9D2-812D-8528C90A83E0" name="team_tour_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:36:02 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<referredTableLongName>tour</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>259CB554-7545-D96C-6F6F-531F3DDC5BCE</referredTableID>
+<keyObject>ED0CF2FB-8D78-DF8B-0B4D-05A69E548B2A</keyObject>
+<referredKeyID>ED0CF2FB-8D78-DF8B-0B4D-05A69E548B2A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>tour_id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorColumn>2779A6E6-E9FD-A730-996F-B60114EA9FCE</discriminatorColumn>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
