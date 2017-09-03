@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B2BDF521-9D03-937B-F968-3BC7DD85ECBD" name="team">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:33:09 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="team_id" id="7F568280-5A66-0D27-4627-B88C6CCDCE34">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:34:12 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="team_games_won" id="53047F52-EF44-FD8A-79FF-231E1BCEAAD4">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:34:12 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="team_games_played" id="1C575C2F-3DFF-4B0B-43C3-54936A051CEE">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:34:12 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tour_id" id="4505E642-517C-7729-73E9-E768FEB00A08">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:36:02 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="688D751A-26DA-F171-3438-5E06D6D339CF" referredColumn="2779A6E6-E9FD-A730-996F-B60114EA9FCE"/>
+</associations>
+</Column>
+<Column name="user_id1" id="590E3697-05B2-3FD3-D445-A3BC0592C0AD">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:38:19 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="65E466CD-748D-3034-C86A-7EE9314999D7" referredColumn="4DC8FE3B-4AC6-E02F-66BE-A41A7B61F8A3"/>
+</associations>
+</Column>
+<Column name="user_id2" id="9A3919FA-68F0-3A8C-0C02-F11E824E0294">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:39:55 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3FFBBFB6-F756-779F-83B1-8D97719D3A4A" referredColumn="4DC8FE3B-4AC6-E02F-66BE-A41A7B61F8A3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0374B7CD-47C2-3953-753F-0C1C9B7AF27F" name="team_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:34:12 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7F568280-5A66-0D27-4627-B88C6CCDCE34"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="BACF455D-9754-C9D2-812D-8528C90A83E0" name="team_tour_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:36:02 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4505E642-517C-7729-73E9-E768FEB00A08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CAE08490-5B3C-F2D4-CD54-A0044F21572C" name="team_user_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:38:19 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="590E3697-05B2-3FD3-D445-A3BC0592C0AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B8A1BB5-0CCA-C127-0892-42F0D26F8F0E" name="team_user_FKv2">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:39:55 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A3919FA-68F0-3A8C-0C02-F11E824E0294"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
