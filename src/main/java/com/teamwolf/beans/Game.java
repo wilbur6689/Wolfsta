@@ -6,6 +6,9 @@ public class Game {
     private int gamePassword = 0 ;
     private int players = 0;
     private int turn = 0;
+    //TODO at to database
+    private int round; //round number (used for determining who dealer is
+    //TODO these comments
 //    private int timeLimit = 0;
 //    private int gameStartDate = 0; Talk to phillip about the game start date.
 //    private int game_resolved;
@@ -19,6 +22,20 @@ public class Game {
     public Game() {
 
     }// public Game()
+
+    /**
+     * Basic New Game Constructor
+     * @param gameName identifier to other users
+     * @param gamePassword can be null
+     * @param players number of players
+     */
+    public Game(String gameName, int gamePassword, int players) {
+        this.gameName = gameName;
+        this.gamePassword = gamePassword;
+        this.players = players;
+        this.turn = 1;
+        this.round = 1;
+    }
 
     public int getGameId() {
         return gameId;
