@@ -1,5 +1,7 @@
 package com.teamwolf.beans;
 
+// import org.apache.log4j.Logger;
+
 public class Player {
 
     private int playerId = 0;
@@ -9,6 +11,7 @@ public class Player {
     private int game_id = 0;
     private int team_team_id = 0;
     private int team_number = 0;
+    // protected Logger log = Logger.getRootLogger();
 
     /**
      * Constructor

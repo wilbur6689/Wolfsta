@@ -5,6 +5,7 @@ public class FriendLookUp {
     private int friendshipId = 0;
     private int userId1 = 0;
     private int userId2 = 0;
+    // protected Logger log = Logger.getRootLogger();
 
     /**
      * Constructor

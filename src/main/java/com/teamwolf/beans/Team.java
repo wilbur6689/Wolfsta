@@ -7,6 +7,7 @@ public class Team {
     private int tourId = 0;
     private Player playerOne;
     private Player playerTwo;
+    // protected Logger log = Logger.getRootLogger();
 
     /**
      * Constructor

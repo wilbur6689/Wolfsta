@@ -11,6 +11,7 @@ public class Game {
 //    private int game_resolved;
     private int gameWon = 0;
     private int gameLost = 0;
+    // protected Logger log = Logger.getRootLogger();
 
     /**
      * Constructor
