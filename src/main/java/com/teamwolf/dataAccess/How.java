@@ -4,5 +4,5 @@ import java.io.*;
 
 public interface How<T extends DataObject>
 {
-    Serializable getID(T obj);
+    Serializable getA(T obj);
 }
