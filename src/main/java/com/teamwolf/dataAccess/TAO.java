@@ -39,11 +39,10 @@ public class TAO<T extends DataObject>
         return sessionFactory.openSession();
     }//
 
-    public T getById(Serializable id) {
+    public T getByUnique(Serializable id) {
         Session con = this.getSession();
         try{
-            T o = (T) con.get(this.classOF, id);
-            return o;
+            return (T) con.get(this.classOF, id);
         }
         catch(HibernateException ex)
         {
@@ -62,7 +61,7 @@ public class TAO<T extends DataObject>
             t = s.beginTransaction();
             //a is persistent
             //o is detached
-            T a = (T) s.get(this.classOF, this.how.getID(o) );
+            T a = (T) s.get(this.classOF, o.getID() );
             if(a != null){
                 s.merge(o);
                 s.save(a);
