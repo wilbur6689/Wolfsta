@@ -10,6 +10,9 @@ public class Player {
     private int team_team_id = 0;
     private int team_number = 0;
 
+    /**
+     * Constructor
+     */
     public Player() {
 
     }// public Player()

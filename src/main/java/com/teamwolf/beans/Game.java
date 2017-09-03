@@ -12,6 +12,9 @@ public class Game {
     private int gameWon = 0;
     private int gameLost = 0;
 
+    /**
+     * Constructor
+     */
     public Game() {
 
     }// public Game()
