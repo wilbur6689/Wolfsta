@@ -6,6 +6,7 @@ public class User {
     private String password;
     private int gamesPlayed;
     private int gamesWon;
+    // protected Logger log = Logger.getRootLogger();
 
     /**
      * This constructor is for creating a new user
