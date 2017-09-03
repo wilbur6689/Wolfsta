@@ -1,0 +1,115 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F22C15CE-4FF8-6C79-777C-199C0B018007" name="card_lookup">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:11:52 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="card_id" id="3ED6EF3C-EAB1-34FB-CFD1-75C1AE6D2DB8">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:15:03 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="card_number" id="A597B41A-2BF8-C620-2FAD-49EB18AFAA26">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 21:13:58 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="game_id" id="80604462-BD95-E14C-8681-A3691BCAA8AB">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:49:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5AF99265-92DA-83EE-953B-55D90F2AFEA0" referredColumn="A6D82B8C-5EFE-682B-7CAF-D123B2CA5A53"/>
+</associations>
+</Column>
+<Column name="player_id" id="7ECCE23B-C585-D7F4-CC74-EDF3B65D8257">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:53:48 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0A679179-FB58-7510-96DA-63C9C7EFA55F" referredColumn="2F33A1F4-5E8C-B0B6-848D-73CB4C6428A0"/>
+</associations>
+</Column>
+<Column name="state" id="8446CB02-98C1-E9E5-1713-0D3E79BA2BD2">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:15:03 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="meld_id" id="DF016962-B891-9AF8-13B6-7D1570F537B9">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:15:03 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B0002E92-812B-0D3A-D14C-66383EAD7794" name="card_lookup_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:15:03 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3ED6EF3C-EAB1-34FB-CFD1-75C1AE6D2DB8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0436FF52-E38F-04F3-D572-F59DC4B2BD42" name="card_lookup_game_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:49:45 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="80604462-BD95-E14C-8681-A3691BCAA8AB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F5A9C8DB-2BCC-70C8-C05B-E3FAFB0FE27A" name="card_lookup_player_FK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:53:48 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7ECCE23B-C585-D7F4-CC74-EDF3B65D8257"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

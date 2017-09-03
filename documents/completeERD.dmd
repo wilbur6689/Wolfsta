@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="completeERD" id="55D67DB6-7BCD-C9B3-8C8A-0F231D6A27D1" version="3.5">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:10:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>55D67DB6-7BCD-C9B3-8C8A-0F231D6A27D1</designId>
+</OSDM_Design>

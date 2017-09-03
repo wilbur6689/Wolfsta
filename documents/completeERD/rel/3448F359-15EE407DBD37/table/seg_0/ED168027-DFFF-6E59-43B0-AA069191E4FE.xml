@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="ED168027-DFFF-6E59-43B0-AA069191E4FE" name="user">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:15:28 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_2</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="user_id" id="4DC8FE3B-4AC6-E02F-66BE-A41A7B61F8A3">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="username" id="AC8177EA-B854-CCE9-76B6-F4EA1DBD4CD8">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="password" id="F7931A57-F46F-F7F6-95D0-57183C416B65">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="avatar" id="4ADCB6A3-4366-C42A-9A9F-85E1B113F6A1">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>25</dataTypeSize>
+<ownDataTypeParameters>25,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_games_won" id="67F49F31-6E04-70ED-1653-E92278AB2ABE">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="user_games_played" id="532CE438-E8E4-A1D7-5963-5FBA67B7715E">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="card_front" id="79D39953-D683-6ABA-A46C-4D7B77B523D7">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="card_back" id="65875B87-08E5-FB7D-C569-99C0588E51C8">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E2E1816B-200F-BACB-A9C2-838E6503BF9D" name="user_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:18:17 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4DC8FE3B-4AC6-E02F-66BE-A41A7B61F8A3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="402C0ED5-5A73-0EA3-6ABF-B59F07482A33" name="user__UN">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:52:36 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AC8177EA-B854-CCE9-76B6-F4EA1DBD4CD8"/>
+<colUsage columnID="F7931A57-F46F-F7F6-95D0-57183C416B65"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

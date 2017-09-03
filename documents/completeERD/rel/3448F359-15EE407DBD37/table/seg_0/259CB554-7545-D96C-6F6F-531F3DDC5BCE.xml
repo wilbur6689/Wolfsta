@@ -1,0 +1,46 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="259CB554-7545-D96C-6F6F-531F3DDC5BCE" name="tour">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:34:30 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="tour_id" id="2779A6E6-E9FD-A730-996F-B60114EA9FCE">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:35:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tour_type" id="2ADA9E73-4C5A-F142-B16A-112CBE8CF20A">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:35:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="ED0CF2FB-8D78-DF8B-0B4D-05A69E548B2A" name="tour_PK">
+<createdBy>Willis</createdBy>
+<createdTime>2017-09-02 12:35:11 UTC</createdTime>
+<ownerDesignName>completeERD</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2779A6E6-E9FD-A730-996F-B60114EA9FCE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
