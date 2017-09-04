@@ -10,7 +10,7 @@ public class TAO<T extends DataObject>
 {
     private SessionFactory sessionFactory;
     private Class<? extends Serializable> classOF;
-    private How<T> how;
+    //private How<T> how;
 
     static private SessionFactory badProgramming;
 
@@ -28,11 +28,10 @@ public class TAO<T extends DataObject>
     }
     private static SessionFactory getSF() { return badProgramming; }
 
-    public TAO(T generic, How<T> how)
+    public TAO(T generic)
     {
         this.sessionFactory = TAO.getSF();
         this.classOF = generic.getClass();
-        this.how = how;
     }
     protected Session getSession()
     {
