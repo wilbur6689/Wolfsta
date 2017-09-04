@@ -4,41 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ERS App</title>
-    <link rel="stylesheet" type="text/css" href="css/styleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Angular Bank App</title>
+    <link rel="stylesheet" type="text/css" href="styleSheet.css">
+    
 </head>
-<body>
+<body ng-app="angularBankApp">
 
-<h1 id="mainHeading">Welcome to the Employee Reimbursement Program</h1>
+    <div ng-view></div>
 
-<div class="container">
-    <div id="logoutDiv">
-        <h2 id="logoutText"></h2>
-        <button type="button" id="logoutButton">Log out</button>
-    </div>
-    <div class="login" , id="loginDiv">
-        <h4>Login to Submit or Review Reimbursements</h4>
-        <hr>
-        <form class="login-inner" method="post">
-            <br>
-            <br>
-            <br>
-            <br>
-            <input type="username" name="uname" class="username" id="username-input" placeholder="Enter Username">
-            <input type="password" name="password" class="password" id="password-input" placeholder="Password">
-            <br>
-            <br>
-            <br>
-            <input class="button" id="loginButton" type="button" value="Login">
-        </form>
-
-        <div id="loginSuccess">
-            <h1 id="loginMess"></h1>
-        </div>
-
-    </div>
-</div>
-
-<script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
