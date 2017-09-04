@@ -1,6 +1,6 @@
 
 
-var bankApp = angular.module("angularBankApp", ["ngRoute"]);
+var bankApp = angular.module("wolfsta", ["ngRoute"]);
 
 bankApp.config(function($routeProvider) {
     $routeProvider
@@ -9,7 +9,7 @@ bankApp.config(function($routeProvider) {
         controller:'loginCtrl'
     }) 
     .when('/home',{
-        templateUrl : "views/home.html",
+        templateUrl : "views/mainMenu.html",
         controller : 'homeCtrl'
     })
     .when('/deposit',{
