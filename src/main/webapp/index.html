@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ERS App</title>
+    <link rel="stylesheet" type="text/css" href="css/styleSheet.css">
+</head>
+<body>
+
+<h1 id="mainHeading">Welcome to the Employee Reimbursement Program</h1>
+
+<div class="container">
+    <div id="logoutDiv">
+        <h2 id="logoutText"></h2>
+        <button type="button" id="logoutButton">Log out</button>
+    </div>
+    <div class="login" , id="loginDiv">
+        <h4>Login to Submit or Review Reimbursements</h4>
+        <hr>
+        <form class="login-inner" method="post">
+            <br>
+            <br>
+            <br>
+            <br>
+            <input type="username" name="uname" class="username" id="username-input" placeholder="Enter Username">
+            <input type="password" name="password" class="password" id="password-input" placeholder="Password">
+            <br>
+            <br>
+            <br>
+            <input class="button" id="loginButton" type="button" value="Login">
+        </form>
+
+        <div id="loginSuccess">
+            <h1 id="loginMess"></h1>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
