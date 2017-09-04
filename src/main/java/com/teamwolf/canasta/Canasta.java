@@ -18,9 +18,9 @@ public class Canasta {
     /**
      * uses dao to create a new game in the database
      * !!First Player Is To Be Added Still!!
-     * @param gameName
-     * @param gamePassword
-     * @param players
+     * @param gameName name of game
+     * @param gamePassword password to join game
+     * @param players number of players
      */
     public Canasta(String gameName, String gamePassword, int players){
         GameDAOInterface gDao = null;//TODO rig up to the implemented dao
@@ -37,11 +37,18 @@ public class Canasta {
         pDao.addPlayer(this.game.getGameId());
     }
 
-   public void 
+    /**
+     * removes a player from the game
+     * @param playerid player to be removed
+     */
+   public void removePlayer(int playerid){
+       PlayerDAOInterface pDao = null; //TODO rig up to implemented dao
+       pDao.removePlayer(this.game.getGameId(),playerid);
+   }
 
     /**
      * adds cards to Database in deck
-     * refreshes Player list to ensure all have been added
+     * refreshes Player list to ensure all have been added TODO
      * deals hands to players
      * draws a card(or cards)for discard pile
      */
@@ -51,7 +58,9 @@ public class Canasta {
         cDao.createDeck(this.game.getGameId());
 
         for( CanastaPlayer cp : players){
-
+            for( int i = 0; i < 11; i++){
+                cDao.drawFromStock(cp.getPlayerId());
+            }
         }
     }
 
