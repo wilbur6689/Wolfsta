@@ -38,7 +38,8 @@ public class TAO<T extends DataObject>
         return sessionFactory.openSession();
     }//
 
-    public T getByUnique(Serializable id) {
+    public T getByUnique(Serializable id)
+    {
         Session con = this.getSession();
         try{
             return (T) con.get(this.classOF, id);
@@ -52,7 +53,8 @@ public class TAO<T extends DataObject>
         return null;
     }
 
-    public T update(T o) {
+    public T update(T o)
+    {
         Session s = this.getSession();
         Transaction t =  null;
 
@@ -64,6 +66,57 @@ public class TAO<T extends DataObject>
             if(a != null){
                 s.merge(o);
                 s.save(a);
+            }
+            t.commit();
+
+        }catch (HibernateException hex){
+            hex.printStackTrace();
+            t.rollback();
+        }finally{
+            s.close();
+        }
+        return o;
+    }
+
+    public T add(T o)
+    {
+        if(o.getID() != null)
+            throw new RuntimeException("o must return Null for its ID to be added");
+
+        Session s = this.getSession();
+        Transaction t =  null;
+        Serializable x = null;
+        try{
+            t = s.beginTransaction();
+            //a is persistent
+            //o is detached
+            x = s.save(o);
+            t.commit();
+
+        }catch (HibernateException hex){
+            hex.printStackTrace();
+            t.rollback();
+        }finally{
+            s.close();
+        }
+
+
+        return this.getByUnique(x);
+    }
+
+    public T delete(T o)
+    {
+        Session s = this.getSession();
+        Transaction t =  null;
+
+        try{
+            t = s.beginTransaction();
+            //a is persistent
+            //o is detached
+            T a = (T) s.get(this.classOF, o.getID() );
+            if(a != null){
+                s.merge(o);
+                s.delete(a);
             }
             t.commit();
 

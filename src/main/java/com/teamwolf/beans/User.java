@@ -9,7 +9,7 @@ import java.io.*;
 @Entity
 @Table(name="USER_TABLE")
 public class User implements DataObject{
-    private int userid;
+    private Integer userid;
     private String username;
     private String password;
     private int gamesPlayed;
@@ -47,11 +47,12 @@ public class User implements DataObject{
     //*******************
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="USER_ID")
-    public int getUserid() {
+    public Integer getUserid() {
         return userid;
     }
-    public void setUserid(int userid) {
+    public void setUserid(Integer userid) {
         this.userid = userid;
     }
 
