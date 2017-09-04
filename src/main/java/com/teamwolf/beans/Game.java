@@ -3,16 +3,16 @@ package com.teamwolf.beans;
 public class Game {
     private int gameId = 0;
     private String gameName = "";
-    private int gamePassword = 0 ;
+    private String gamePassword;
     private int players = 0;
     private int turn = 0;
-    //TODO at to database
+    //TODO add to database
     private int round; //round number (used for determining who dealer is
-    //TODO these comments
-//    private int timeLimit = 0;
-//    private int gameStartDate = 0; Talk to phillip about the game start date.
-//    private int game_resolved;
-    private int gameWon = 0;
+    //TODO time limit
+    //private int timeLimit = 0;
+    private String gameStartDate;
+    private String gameResolved;
+    private int gameWon = 0;//TODO what are these for?
     private int gameLost = 0;
     // protected Logger log = Logger.getRootLogger();
 
@@ -29,7 +29,7 @@ public class Game {
      * @param gamePassword can be null
      * @param players number of players
      */
-    public Game(String gameName, int gamePassword, int players) {
+    public Game(String gameName, String gamePassword, int players) {
         this.gameName = gameName;
         this.gamePassword = gamePassword;
         this.players = players;
@@ -53,13 +53,13 @@ public class Game {
         this.gameName = gameName;
     }// public void setGameName(String gameName)
 
-    public int getGamePassword() {
+    public String getGamePassword() {
         return gamePassword;
     }// public int getGamePassword()
 
-    public void setGamePassword(int gamePassword) {
+    public void setGamePassword(String gamePassword) {
         this.gamePassword = gamePassword;
-    }// public void setGamePassword(int gamePassword)
+    }
 
     public int getPlayers() {
         return players;
