@@ -68,7 +68,7 @@ public class Team implements DataObject
     }// public void setPlayerOne(Player playerOne)
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="USER_ID1", referencedColumnName="USER_ID")
+    @JoinColumn(name="USER_ID2", referencedColumnName="USER_ID")
     public User getPlayerTwo() {
         return playerTwo;
     }// public Player getPlayerTwo()

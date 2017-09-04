@@ -16,6 +16,30 @@ public class TAOTest
         User user1 = UserTao.getByUnique(1);
         System.out.println( geeson.toJson(user1) );
 
+        User user2 = new User();
+        user2.setUsername("cJohnson");
+        user2.setPassword("lemons");
+        user2.setGamesPlayed(1);
+        user2.setGamesWon(5);
+        user2.setUserid(null);
+
+        User user3 = UserTao.add(user2);
+
+        System.out.println( geeson.toJson(user2) );
+        System.out.println( geeson.toJson(user3) );
+        user3.setGamesWon(1);
+
+        UserTao.update(user3);
+
+        user3 = UserTao.getByUnique(user3.getUsername());
+        System.out.println( geeson.toJson(user3) );
+
+        UserTao.delete(user3);
+
+        user3 = UserTao.getByUnique(user3.getUserid());
+        System.out.println( geeson.toJson(user3) );
+
+
     }
     @Test
     public void Teams()
