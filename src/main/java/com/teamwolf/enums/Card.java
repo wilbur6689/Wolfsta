@@ -115,7 +115,7 @@ public enum Card {
 
 
     private final int cardId;
-    protected Logger log = Logger.getRootLogger();
+    protected static Logger log = Logger.getRootLogger();
 
     Card(int x){
         this.cardId = x;
@@ -164,5 +164,13 @@ public enum Card {
             log.error("A card Has an invalid rank");
             return 0;
         }
+    }
+
+    public static Card getCardbyCardId(int id){
+        for(Card c : Card.values()){
+            if(c.cardId == id) return c;
+        }
+        log.error("There is no car for that id");
+        return null;
     }
 }
