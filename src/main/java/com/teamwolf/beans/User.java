@@ -1,12 +1,22 @@
 package com.teamwolf.beans;
 
-public class User {
-    private int userid;
+
+import com.teamwolf.dataAccess.*;
+
+import javax.persistence.*;
+import java.io.*;
+
+@Entity
+@Table(name="USER_TABLE")
+public class User implements DataObject{
+    private Integer userid;
     private String username;
     private String password;
     private int gamesPlayed;
     private int gamesWon;
     // protected Logger log = Logger.getRootLogger();
+
+    public User () {} // needed for hibernate
 
     /**
      * This constructor is for creating a new user
@@ -35,46 +45,51 @@ public class User {
     //*******************
     //Getters and Setters
     //*******************
-    public int getUserid() {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name="USER_ID")
+    public Integer getUserid() {
         return userid;
     }
-
-    public void setUserid(int userid) {
+    public void setUserid(Integer userid) {
         this.userid = userid;
     }
 
+    @Column(name="USERNAME")
     public String getUsername() {
         return username;
     }
-
     public void setUsername(String username) {
         this.username = username;
     }
 
+    @Column(name="PASSWORD")
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
+    @Column(name="USER_GAMES_PLAYED")
     public int getGamesPlayed() {
         return gamesPlayed;
     }
-
     public void setGamesPlayed(int gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
     }
 
+    @Column(name="USER_GAMES_WON")
     public int getGamesWon() {
         return gamesWon;
     }
-
     public void setGamesWon(int gamesWon) {
         this.gamesWon = gamesWon;
     }
 
+
+    @Transient
     public int getRating(){
         if (this.gamesPlayed == 0){
             return 0;
@@ -85,4 +100,11 @@ public class User {
         }
 
     }
+    @Transient
+    @Override
+    public Serializable getID()
+    {
+        return this.getUserid();
+    }
+
 }
