@@ -1,5 +1,7 @@
 package com.teamwolf.enums;
 
+import org.apache.log4j.Logger;
+
 public enum CardState {
     DECK(1),
     HAND(2),
@@ -8,6 +10,7 @@ public enum CardState {
     Meld(5);
 
     private final int cState;
+    protected static Logger log = Logger.getRootLogger();
 
     CardState(int x){
         this.cState = x;
@@ -15,5 +18,13 @@ public enum CardState {
 
     public int getState(){
         return this.cState;
+    }
+
+    public static CardState getCardStatebyCardStateId(int id){
+        for(CardState cs : CardState.values()){
+            if(cs.cState == id) return cs;
+        }
+        log.error("There is no cardState for that id");
+        return null;
     }
 }

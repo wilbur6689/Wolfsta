@@ -17,8 +17,17 @@ public class Player {
      * Constructor
      */
     public Player() {
+    }
 
-    }// public Player()
+    public Player(int playerId, int playerNumber, int user_id, int game_id, int team_team_id, int team_number) {
+        this.playerId = playerId;
+        this.playerNumber = playerNumber;
+        this.score = 0;
+        this.user_id = user_id;
+        this.game_id = game_id;
+        this.team_team_id = team_team_id;
+        this.team_number = team_number;
+    }
 
     public int getPlayerId() {
         return playerId;

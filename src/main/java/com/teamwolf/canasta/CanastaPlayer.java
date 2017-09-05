@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public abstract class CanastaPlayer extends Player{
 
+
     public void makeMove(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard){
         if(isStock()){
             draw(hand, meld, opponentMeld, discard);
