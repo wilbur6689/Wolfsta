@@ -1,0 +1,38 @@
+<title> Create Game </title>
+<style>
+    .center{
+        margin: auto;
+        margin-top: 200px;
+        width: 30%;
+    }
+    .fieldset_auto_width{
+        display: inline-block;
+    }
+</style>
+<div class="center">
+    <form>
+            <fieldset class="fieldset_auto_width">
+            <div>
+                <input ng-model="game.name" id="GameName" placeholder="Enter Game Name">
+                <input ng-model="game.password" id="GamePassword" placeholder="Enter Game Password">
+            </div>
+            <br/>
+            <div>
+                Privacy Setting: 
+                <select ng-model="game.accessibility" ng-repeat="view in viewTypes">
+                </select>
+            </div>
+            <br/>
+            <div>
+                Number of Players: 
+                <select ng-model="game.playerNumber" ng-repeat="person in players">
+                </select>
+                Time limit: 
+                <select ng-model="game.timelimit" ng-repeat="limit in timer">
+                </select>
+            </div>
+            <br/>
+            <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>
+        </fieldset>
+    </form>
+</div>
