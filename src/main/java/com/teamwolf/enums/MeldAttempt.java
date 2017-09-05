@@ -4,10 +4,10 @@ import org.apache.log4j.Logger;
 
 public enum MeldAttempt {
     Success(1),
-    HAND(2),
-    DISCARD(3),
-    TOP(4), //the top of the discard pile
-    Meld(5);
+    INITIALMELDVALUEFAIL(2),//didn't reach initial meld value
+    INSUFFICIENTCARDS(3), //need at least 3
+    INSUFFICIENTNATURALS(4), //need more naturals than wild
+    CANTMELDREDTHREES(5); //can't meld red threes
 
     private final int mAttempt;
     protected static Logger log = Logger.getRootLogger();

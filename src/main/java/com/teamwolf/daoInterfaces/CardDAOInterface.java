@@ -1,5 +1,10 @@
 package com.teamwolf.daoInterfaces;
 
+import com.teamwolf.beans.Card;
+import com.teamwolf.enums.CardEnum;
+
+import java.util.ArrayList;
+
 public interface CardDAOInterface {
 
     /**
@@ -24,10 +29,18 @@ public interface CardDAOInterface {
     int drawToTop(int gameId);
 
     /**
-     *
+     * gets a list of cards in a given players meld
      * @param gameId the game
-     * @param playerId the player wh
-     * @return
+     * @param playerId the player who owns the meld
+     * @return an arrayList of Cards that have the corresponding playerid and are in a meld
      */
-    int[] getCurrentMeld(int gameId, int playerId);
+    ArrayList<Card> getCurrentMeld(int gameId, int playerId);
+
+    /**
+     * updates cards to reflect they've been melded
+     * @param gameId the game
+     * @param playerId the player that is melding
+     * @param meld an array of the cardIds that are in this meld
+     */
+    void addMeld(int gameId, int playerId, int[] meld);
 }

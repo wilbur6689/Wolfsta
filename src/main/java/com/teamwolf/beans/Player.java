@@ -36,6 +36,16 @@ public class Player implements DataObject{
         this.team_number = team_number;
     }
 
+    public Player(int playerId, int playerNumber, int playerScore, int user_id, int game_id, int team_team_id, int team_number) {
+        this.playerId = playerId;
+        this.playerNumber = playerNumber;
+        this.score = playerScore;
+        this.user_id = user_id;
+        this.game_id = game_id;
+        this.team_team_id = team_team_id;
+        this.team_number = team_number;
+    }
+
     @Id
     @Column(name = "PLAYER_ID")
     public int getPlayerId() {

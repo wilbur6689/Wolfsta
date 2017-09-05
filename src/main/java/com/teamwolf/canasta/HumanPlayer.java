@@ -1,6 +1,6 @@
 package com.teamwolf.canasta;
 
-import com.teamwolf.enums.Card;
+import com.teamwolf.enums.CardEnum;
 
 import java.util.ArrayList;
 
@@ -17,17 +17,17 @@ public class HumanPlayer extends CanastaPlayer{
     }
 
     @Override
-    protected void draw(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard) {
+    protected void draw(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
         //Handled elsewhere for humans
     }
 
     @Override
-    protected void meld(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard) {
+    protected void meld(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
         //Handled elsewhere for humans
     }
 
     @Override
-    protected void discard(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard) {
+    protected void discard(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
         //Handled elsewhere for humans
     }
 }

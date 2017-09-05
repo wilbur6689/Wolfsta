@@ -1,14 +1,14 @@
 package com.teamwolf.canasta;
 
 import com.teamwolf.beans.Player;
-import com.teamwolf.enums.Card;
+import com.teamwolf.enums.CardEnum;
 
 import java.util.ArrayList;
 
 public abstract class CanastaPlayer extends Player{
 
 
-    public void makeMove(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard){
+    public void makeMove(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard){
         if(isStock()){
             draw(hand, meld, opponentMeld, discard);
             meld( hand,  meld,  opponentMeld, discard);
@@ -31,16 +31,16 @@ public abstract class CanastaPlayer extends Player{
     /**
      * decide whether to draw from discard
      */
-    protected abstract void draw(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard);
+    protected abstract void draw(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
 
     /**
      *decide whether or not to make melds
      */
-    protected abstract void meld(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard);
+    protected abstract void meld(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
 
     /**
      *decide what to discard
      */
-    protected abstract void discard(ArrayList<Card> hand, ArrayList<Card> meld, ArrayList<Card> opponentMeld, Card discard);
+    protected abstract void discard(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
 
 }

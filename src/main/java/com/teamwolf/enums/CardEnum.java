@@ -2,7 +2,7 @@ package com.teamwolf.enums;
 
 import org.apache.log4j.Logger;
 
-public enum Card {
+public enum CardEnum {
     ACEOFSPADES1(1),
     ACEOFSPADES2(2),
     ACEOFCLUBS1(3),
@@ -117,7 +117,7 @@ public enum Card {
     private final int cardId;
     protected static Logger log = Logger.getRootLogger();
 
-    Card(int x){
+    CardEnum(int x){
         this.cardId = x;
     }
 
@@ -171,8 +171,8 @@ public enum Card {
      * @param id the id of the card in database terms
      * @return the card enum
      */
-    public static Card getCardbyCardId(int id){
-        for(Card c : Card.values()){
+    public static CardEnum getCardbyCardId(int id){
+        for(CardEnum c : CardEnum.values()){
             if(c.cardId == id) return c;
         }
         log.error("There is no card for that id");
