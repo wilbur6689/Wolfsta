@@ -3,8 +3,10 @@ package com.teamwolf.dataAccess;
 import org.hibernate.*;
 import org.hibernate.boot.registry.*;
 import org.hibernate.cfg.*;
+import org.hibernate.criterion.*;
 
 import java.io.*;
+import java.util.*;
 
 public class TAO<T extends DataObject>
 {
@@ -38,11 +40,31 @@ public class TAO<T extends DataObject>
         return sessionFactory.openSession();
     }//
 
-    public T getByUnique(Serializable id)
+    public T getById(Serializable id)
     {
         Session con = this.getSession();
         try{
             return (T) con.get(this.classOF, id);
+        }
+        catch(HibernateException ex)
+        {
+            ex.printStackTrace();
+        }finally{
+            con.close();
+        }
+        return null;
+    }
+
+    public Collection<T> getBy(String key,Object value)
+    {
+        Session con = this.getSession();
+        List<T> ret = null;
+        try{
+            Criteria c = con.createCriteria(classOF);
+            c.add(Restrictions.eq(key,value));
+
+            ret = c.list();
+
         }
         catch(HibernateException ex)
         {
@@ -78,6 +100,28 @@ public class TAO<T extends DataObject>
         return o;
     }
 
+    public Collection<T> updateAll(Collection<T> detList)
+    {
+        Session s = this.getSession();
+        Transaction t =  null;
+
+        try{
+            t = s.beginTransaction();
+            for (T o: detList)
+            {
+                s.update(o);
+            }
+            t.commit();
+
+        }catch (HibernateException hex){
+            hex.printStackTrace();
+            t.rollback();
+        }finally{
+            s.close();
+        }
+        return detList;
+    }
+
     public T add(T o)
     {
         if(o.getID() != null)
@@ -101,7 +145,7 @@ public class TAO<T extends DataObject>
         }
 
 
-        return this.getByUnique(x);
+        return this.getById(x);
     }
 
     public T delete(T o)

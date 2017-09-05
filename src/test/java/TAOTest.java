@@ -13,7 +13,7 @@ public class TAOTest
         TAO<User> UserTao = new TAO<>(new User());
 
 
-        User user1 = UserTao.getByUnique(1);
+        User user1 = UserTao.getById(1);
         System.out.println( geeson.toJson(user1) );
 
         User user2 = new User();
@@ -31,12 +31,12 @@ public class TAOTest
 
         UserTao.update(user3);
 
-        user3 = UserTao.getByUnique(user3.getUsername());
+        user3 = UserTao.getById(user3.getUsername());
         System.out.println( geeson.toJson(user3) );
 
         UserTao.delete(user3);
 
-        user3 = UserTao.getByUnique(user3.getUserid());
+        user3 = UserTao.getById(user3.getUserid());
         System.out.println( geeson.toJson(user3) );
 
 
@@ -48,7 +48,7 @@ public class TAOTest
         TAO<Team> TeamTao = new TAO<>(new Team());
 
 
-        Team Team1 = TeamTao.getByUnique(1);
+        Team Team1 = TeamTao.getById(1);
         System.out.println( geeson.toJson(Team1) );
 
     }
@@ -59,7 +59,7 @@ public class TAOTest
         TAO<Reward> RewardTao = new TAO<>(new Reward());
 
 
-        Reward Reward1 = RewardTao.getByUnique(1);
+        Reward Reward1 = RewardTao.getById(1);
         System.out.println( geeson.toJson(Reward1) );
 
     }
@@ -70,7 +70,7 @@ public class TAOTest
         TAO<Player> PlayerTao = new TAO<>(new Player());
 
 
-        Player Player1 = PlayerTao.getByUnique(1);
+        Player Player1 = PlayerTao.getById(1);
         System.out.println( geeson.toJson(Player1) );
 
     }
@@ -81,7 +81,7 @@ public class TAOTest
         TAO<Game> GameTao = new TAO<>(new Game());
 
 
-        Game Game1 = GameTao.getByUnique(1);
+        Game Game1 = GameTao.getById(1);
         System.out.println( geeson.toJson(Game1) );
 
     }
@@ -92,7 +92,7 @@ public class TAOTest
         TAO<FriendLookUp> FriendLookUpTao = new TAO<>(new FriendLookUp());
 
 
-        FriendLookUp FriendLookUp1 = FriendLookUpTao.getByUnique(1);
+        FriendLookUp FriendLookUp1 = FriendLookUpTao.getById(1);
         System.out.println( geeson.toJson(FriendLookUp1) );
 
     }
