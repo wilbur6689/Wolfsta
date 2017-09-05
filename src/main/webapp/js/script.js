@@ -8,22 +8,22 @@ bankApp.config(function($routeProvider) {
         templateUrl : "views/login.html",
         controller:'loginCtrl'
     }) 
-    .when('/home',{
+    .when('/mainMenu',{
         templateUrl : "views/mainMenu.html",
-        controller : 'homeCtrl'
+        controller : 'mainMenuCtrl'
     })
-    .when('/deposit',{
-        templateUrl : "views/deposit.html",
-        controller : 'depositCtrl'
+    .when('/createGame',{
+        templateUrl : "views/createGame.html",
+        controller : 'createGameCtrl'
     })
-    .when('/withdraw',{
-        templateUrl : "views/withdraw.html",
-        controller : 'withdrawCtrl'
+    .when('/friendList',{
+        templateUrl : "views/friendList.html",
+        controller : 'friendListCtrl'
     })
 
-    .when('/displayImage',{
-        templateUrl : "views/displayImage.html",
-        controller : 'displayImageCtrl'
+    .when('/tour',{
+        templateUrl : "views/tour.html",
+        controller : 'tourCtrl'
     })
 
 });
@@ -36,7 +36,7 @@ bankApp.controller('loginCtrl', function($scope, $location){
     }
 });
 
-bankApp.controller('homeCtrl', function($scope, $location){
+bankApp.controller('mainMenuCtrl', function($scope, $location){
     //deposit function 
     $scope.deposit = function(){
         $location.path('/deposit');
@@ -48,7 +48,7 @@ bankApp.controller('homeCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('depositCtrl', function($scope, $location){
+ bankApp.controller('createGameCtrl', function($scope, $location){
     //goHome function 
     $scope.depHome = function(){
         $location.path('/home');
@@ -56,7 +56,7 @@ bankApp.controller('homeCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('withdrawCtrl', function($scope, $location){
+ bankApp.controller('friendListCtrl', function($scope, $location){
     //goHome function 
     $scope.home = function(){
         $location.path('/home');
@@ -64,13 +64,39 @@ bankApp.controller('homeCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('displayImageCtrl', function($scope, $location){
+ bankApp.controller('tourCtrl', function($scope, $location){
     //goHome function 
     $scope.displayImage = function(){
         $location.path('/displayImage');
     }
 
  });
+
+ // Get the modal
+var modal = document.getElementById('friends');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
