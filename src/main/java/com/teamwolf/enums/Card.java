@@ -166,11 +166,16 @@ public enum Card {
         }
     }
 
+    /**
+     *
+     * @param id the id of the card in database terms
+     * @return the card enum
+     */
     public static Card getCardbyCardId(int id){
         for(Card c : Card.values()){
             if(c.cardId == id) return c;
         }
-        log.error("There is no car for that id");
+        log.error("There is no card for that id");
         return null;
     }
 }
