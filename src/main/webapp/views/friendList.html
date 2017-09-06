@@ -1,21 +1,36 @@
 <!--Pulling Awesome Font -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
-<div class="container">
+<style>
+    .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+        background-color: black;
+        color: white;
+    }
+    .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+        background-color: red;
+        color:black;
+    }
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+        background-color: navy;
+        color: white;
+    }
+</style>
+<div class="container -fluid">
     <div>
-        <div >
-            <div>
-            <h4>Welcome, Please Log in Below:</h4>
-            <input type="text" id="userName" placeholder="username" />
-            </br>
-            <input type="text" id="userPassword" placeholder="password" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn">     
-                 <button type="submit" ng-click="login()">Login</button> 
-            </span>
-            </div>
-            </div>
-        </div>
+        <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Avatar</th>
+                <th>Username</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="friend in friendlist">
+                <td>{{friend.avatar}}</td>
+                <td>{{friend.username}}</td>
+                <td>{{friend.rank}}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>
