@@ -1,15 +1,15 @@
 package com.teamwolf.canasta;
 
 import com.teamwolf.beans.Player;
-import com.teamwolf.enums.CardEnum;
+import com.teamwolf.enums.Card;
 
 import java.util.ArrayList;
 
 public abstract class CanastaPlayer extends Player{
-    ArrayList<CardEnum> hand;
-    ArrayList<CardEnum> meld;
-    ArrayList<CardEnum> opponentMeld;
-    CardEnum discard;
+    ArrayList<Card> hand;
+    ArrayList<Card> meld;
+    ArrayList<Card> opponentMeld;
+    Card discard;
 
     public void makeMove(){
         if(isStock()){

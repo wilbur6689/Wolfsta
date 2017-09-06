@@ -167,7 +167,7 @@ public enum Card {
     }
 
     /**
-     *
+     * makes a card enum from int id
      * @param id the id of the card in database terms
      * @return the card enum
      */
@@ -177,5 +177,18 @@ public enum Card {
         }
         log.error("There is no card for that id");
         return null;
+    }
+
+    /**
+     * determines if this is a red 3
+     * @return true if is red 3
+     */
+    public boolean isRedThree(){
+        if(this.getId() <= 24 && this.getId() >= 21){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

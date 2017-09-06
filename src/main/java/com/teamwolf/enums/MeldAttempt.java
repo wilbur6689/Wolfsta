@@ -7,7 +7,8 @@ public enum MeldAttempt {
     INITIALMELDVALUEFAIL(2),//didn't reach initial meld value
     INSUFFICIENTCARDS(3), //need at least 3
     INSUFFICIENTNATURALS(4), //need more naturals than wild
-    CANTMELDREDTHREES(5); //can't meld red threes
+    CANTMELDREDTHREES(5), //can't meld red threes
+    CANTGOOUT(6);//can't go out yet
 
     private final int mAttempt;
     protected static Logger log = Logger.getRootLogger();
