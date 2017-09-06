@@ -1,132 +1,79 @@
 package com.teamwolf.dataAccess;
 
-import org.hibernate.*;
-import org.hibernate.boot.registry.*;
-import org.hibernate.cfg.*;
+
 
 import java.io.*;
+import java.util.*;
 
-public class TAO<T extends DataObject>
+public interface TAO<T extends DataObject>
 {
-    private SessionFactory sessionFactory;
-    private Class<? extends Serializable> classOF;
-    //private How<T> how;
+    /**
+     * gets an object from the database based on the primary key
+     * @param id of the desired object
+     * @return the object
+     */
+    T getById(Serializable id);
 
-    static private SessionFactory badProgramming;
+    /**
+     * gets objects by some value, basically a "WHERE key = value"
+     * @param key the field, as named in the bean EX: "username" from the User class, or "state" from the CardLookup Class
+     * @param value the object that would match the field EX: "cJohnson" for "username" or CardState.DECK for "state"
+     * @return a collection of the requested objects
+     */
+    Collection<T> getBy(String key, Object value);
 
-    static // this is not good programming //TODO depency injection?
-    {
-        //Create the configuration object
-        Configuration config = new Configuration();
-        //pass our hibernate configuration to the Configuration
-        config.configure("hibernate.cfg.xml");
+    /**
+     * gets objects by a set of key-value pairs (aka a map)
+     * @param compKey this is a map keys are named fields of beans and value the object of the appropriate type
+     * @return
+     */
+    Collection<T> getByCompositeMap(Map<String, Object> compKey);
 
-        //Register the configuration as a standard service
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                .applySettings(config.getProperties()).build();
-        badProgramming = config.buildSessionFactory(serviceRegistry);
-    }
-    private static SessionFactory getSF() { return badProgramming; }
-
-    public TAO(T generic)
-    {
-        this.sessionFactory = TAO.getSF();
-        this.classOF = generic.getClass();
-    }
-    protected Session getSession()
-    {
-        return sessionFactory.openSession();
-    }//
-
-    public T getByUnique(Serializable id)
-    {
-        Session con = this.getSession();
-        try{
-            return (T) con.get(this.classOF, id);
-        }
-        catch(HibernateException ex)
-        {
-            ex.printStackTrace();
-        }finally{
-            con.close();
-        }
-        return null;
-    }
-
-    public T update(T o)
-    {
-        Session s = this.getSession();
-        Transaction t =  null;
-
-        try{
-            t = s.beginTransaction();
-            //a is persistent
-            //o is detached
-            T a = (T) s.get(this.classOF, o.getID() );
-            if(a != null){
-                s.merge(o);
-                s.save(a);
-            }
-            t.commit();
-
-        }catch (HibernateException hex){
-            hex.printStackTrace();
-            t.rollback();
-        }finally{
-            s.close();
-        }
-        return o;
-    }
-
-    public T add(T o)
-    {
-        if(o.getID() != null)
-            throw new RuntimeException("o must return Null for its ID to be added");
-
-        Session s = this.getSession();
-        Transaction t =  null;
-        Serializable x = null;
-        try{
-            t = s.beginTransaction();
-            //a is persistent
-            //o is detached
-            x = s.save(o);
-            t.commit();
-
-        }catch (HibernateException hex){
-            hex.printStackTrace();
-            t.rollback();
-        }finally{
-            s.close();
-        }
+    /**
+     * gets objects by a set of key-value pairs (aka a map)
+     * @param compKey MapBuilder is syntactic sugar
+     *                you can call this method like so:
+     *                TeamDao.getByCompositeMap(map -> { map.put("player1",1); map.put("player2",2);});
+     * @return
+     */
+    Collection<T> getByCompositeMap(MapBuilder compKey);
 
 
-        return this.getByUnique(x);
-    }
+    /**
+     * some of our objects theoretically have composite keys, this method is similar to the above except
+     * @param compKey
+     * @return
+     */
+    T getByCompositeKey(Map<String, Object> compKey);
+    T getByCompositeKey(MapBuilder compKey);
 
-    public T delete(T o)
-    {
-        Session s = this.getSession();
-        Transaction t =  null;
 
-        try{
-            t = s.beginTransaction();
-            //a is persistent
-            //o is detached
-            T a = (T) s.get(this.classOF, o.getID() );
-            if(a != null){
-                s.merge(o);
-                s.delete(a);
-            }
-            t.commit();
+    /**
+     * updates the given object
+     * @param o, the object to be updated
+     * @return returns the updated object
+     */
+    T update(T o);
 
-        }catch (HibernateException hex){
-            hex.printStackTrace();
-            t.rollback();
-        }finally{
-            s.close();
-        }
-        return o;
-    }
+    /**
+     * runs the update on all the objects in the collection
+     * @param detList
+     * @return returns the updated collection
+     */
+    Collection<T> updateAll(Collection<T> detList);
+
+    /**
+     * adds an object to the database, the id field must be null or it will cause an exception
+     * @param o, object to be added, id field must be null, non-null field in the database must not be null
+     * @return the object, with its assigned id
+     */
+    T add(T o);
+
+    /**
+     * you probably dont want to use this, its not setup for cascading deletes
+     * @param o
+     * @return
+     */
+    T delete(T o);
 
 }
