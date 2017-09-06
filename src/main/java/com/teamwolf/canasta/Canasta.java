@@ -1,18 +1,14 @@
 package com.teamwolf.canasta;
 
-import com.teamwolf.beans.Card;
 import com.teamwolf.beans.Game;
 import com.teamwolf.daoInterfaces.CardDAOInterface;
 import com.teamwolf.daoInterfaces.GameDAOInterface;
 import com.teamwolf.daoInterfaces.PlayerDAOInterface;
-import com.teamwolf.enums.CardEnum;
-import com.teamwolf.enums.CardEnum;
-import com.teamwolf.enums.MeldAttempt;
+import com.teamwolf.enums.*;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Stack;
 
 /**
@@ -35,13 +31,12 @@ public class Canasta {
      * @param players number of players
      */
     public Canasta(String gameName, String gamePassword, int players){
-        GameDAOInterface gDao = null;//TODO rig up to the implemented dao
-        this.game = new Game(gameName, gamePassword, players);
-        this.players = new ArrayList<>();
-        this.game.setGameId(gDao.newGame());
         this.cDao = null;//TODO rig up to implemented dao
         this.pDao = null; //TODO rig up to implemented dao
         this.gDao = null; //TODO rig up to implemented dao
+        this.game = new Game(gameName, gamePassword, players);
+        this.players = new ArrayList<>();
+        this.game.setGameId(gDao.newGame());
     }
 
     /**
@@ -105,9 +100,9 @@ public class Canasta {
      * @return true if card was valid
      */
     private boolean initialDiscard(CardDAOInterface cDao) {
-        CardEnum c;
+        Card c;
         //2s, 3s, Jokers are invalid
-        c = CardEnum.getCardbyCardId(cDao.drawToTop(this.game.getGameId()));
+        c = Card.getCardbyCardId(cDao.drawToTop(this.game.getGameId()));
         if (c.getRank() == 14 || c.getRank() <= 3){
             return false;
         }
@@ -134,13 +129,13 @@ public class Canasta {
      * @param wildCards ranks assigned to wild cards
      * @param fromDiscard null if Discard top not used
      */
-    public MeldAttempt meld(int required, int gameId, int playerId,  ArrayList<CardEnum> cards,  int[] wildCards, CardEnum fromDiscard){
+    public MeldAttempt meld(int required, int gameId, int playerId,  ArrayList<Card> cards,  int[] wildCards, Card fromDiscard){
         this.game = gDao.getGame(gameId);
 
         //add fromDiscard to cards if not in there already
         if(fromDiscard != null){
             boolean included = false;
-            for(CardEnum c : cards){
+            for(Card c : cards){
                 if(c.getId() == fromDiscard.getId()){
                     included = true;
                 }
@@ -160,7 +155,7 @@ public class Canasta {
         int[] rankCount = new int[13];//jokers ignored because they're wild anyway, index 1 will be left blank for 2s
 
         //determine ranks to be added to
-        for(CardEnum c : cards){
+        for(Card c : cards){
             if(c.getRank() != 2 && c.getRank() != 14){//ignore jokers and 2s
                 rankCount[c.getRank() -1] += 1;
             }
@@ -190,7 +185,7 @@ public class Canasta {
             //check that there are more naturals than wilds
             int diff = determineExistingWildDifference(i + 1, teamMeld);
             diff += rankCount[i];
-            for(CardEnum c : cards){
+            for(Card c : cards){
                 if(c.getRank() == (i+1)){
                     diff++;
                 }
@@ -207,7 +202,7 @@ public class Canasta {
 
         //check if point requirement met
         int points = 0;
-        for(CardEnum c : cards){
+        for(Card c : cards){
             points += c.getValue();
         }
         if(points < required){
@@ -225,8 +220,8 @@ public class Canasta {
         //NOTE this may want to be changed
 
         // create a stack of wilds to pop off
-        Stack<CardEnum> wilds = new Stack<>();
-        for(CardEnum c : cards){
+        Stack<Card> wilds = new Stack<>();
+        for(Card c : cards){
             if(c.getRank() == 2 || c.getRank() == 14){
                 wilds.add(c);
             }
@@ -234,9 +229,9 @@ public class Canasta {
 
         //make a meld for each rank
         for(int i = 1; i <= 14; i++){
-            ArrayList<CardEnum> meld = new ArrayList<>();
+            ArrayList<Card> meld = new ArrayList<>();
             if(i != 2 && i != 14){
-                for (CardEnum c : cards){
+                for (Card c : cards){
                     if(c.getRank() == i){
                         meld.add(c);
                     }
@@ -265,18 +260,18 @@ public class Canasta {
      */
     private int determineExistingWildDifference(int rank, ArrayList<Card> teamMeld) {
         int diff = 0;
-        HashSet<CardEnum> wildsOfRank = new HashSet<>();
+        HashSet<Card> wildsOfRank = new HashSet<>();
 
         for( Card c : teamMeld){
-            if(c.getCardEnum().getRank() == rank){
+            if(c.getRank() == rank){
 
                 diff++;//found another natural of that rank
 
-                int meld = c.getMeldId();//get meldId that might have wilds
-
+                //TODO int meld = c.getMeldId();//get meldId that might have wilds
+                //TODO this for loop
                 for(Card c2 : teamMeld){//include the wilds of that meld
-                    if( (CardEnum.getCardbyCardId(c2.getCardId()).getRank() == 2) || (CardEnum.getCardbyCardId(c2.getCardId()).getRank() == 14)){
-                        wildsOfRank.add(CardEnum.getCardbyCardId(c2.getCardId()));
+                    if( (c2.getRank() == 2) || (c2.getRank() == 14)){
+                        wildsOfRank.add(c2);
                     }
                 }
             }
@@ -295,7 +290,7 @@ public class Canasta {
      */
     private boolean hasMeld(int rank, ArrayList<Card> teamMeld) {
         for( Card c : teamMeld){
-            if(c.getCardEnum().getRank() == rank){
+            if(c.getRank() == rank){
                 return true;
             }
         }
@@ -311,14 +306,102 @@ public class Canasta {
     private ArrayList<Card> determineTeamMeld(int gameId, int playerId) {
 
         ArrayList<Card> currentMeld = cDao.getCurrentMeld(gameId, playerId);
-        int playerNumber = pDao.getPlayerNumber(gameId, playerId);
-        int partnerNumber = ((this.game.getPlayers() / 2) + playerNumber) % this.game.getPlayers();
-        int partnerId =  pDao.getPlayerId(gameId, partnerNumber);
+        int partnerId = getPartner(gameId,playerId);
         ArrayList<Card> currentPartnerMeld = cDao.getCurrentMeld(gameId, partnerId);
 
         ArrayList<Card> teamMeld = new ArrayList<>();
         teamMeld.addAll(currentMeld);
         teamMeld.addAll(currentPartnerMeld);
         return teamMeld;
+    }
+
+    /**
+     * determines the playerid of a player's partner
+     * @param gameId the game
+     * @param playerId the player whose partner we don't know
+     * @return the playerId of the partner
+     */
+    public int getPartner(int gameId, int playerId) {
+        int playerNumber = pDao.getPlayerNumber(gameId, playerId);
+        int partnerNumber = ((this.game.getPlayers() / 2) + playerNumber) % this.game.getPlayers();
+        int partnerId =  pDao.getPlayerId(gameId, partnerNumber);
+        return partnerId;
+    }
+
+    /**
+     * determines total score for the parnership
+     * @param gameid the game
+     * @param playerid one of the players in the partnership
+     * @return the combined total score
+     */
+    public int getTotalScore(int gameid, int playerid){
+        int partnerId = getPartner(gameid, playerid);
+        int playerScore = getPlayerScore(gameid,playerid);
+        int partnerScore = getPlayerScore(gameid, partnerId);
+        return (playerScore + partnerScore);
+    }
+
+    /**
+     * Calculates the value of a player's current meld //TODO Canastas
+     * @param gameid the game
+     * @param playerId the player
+     * @return the value of the player's meld
+     */
+    public int getMeldScore(int gameid, int playerId) {
+        int score = 0;
+        ArrayList<Card> meld = cDao.getCurrentMeld(gameid, playerId);
+        for(Card c : meld){
+            score += c.getValue();
+        }
+        return score;
+    }
+
+    /**
+     * calculates the total value of the current meld between the partners
+     * @param gameid the game
+     * @param playerid one of the partners
+     * @return total meld score
+     */
+    public int getTotalMeldScore(int gameid, int playerid){
+        int playerScore = getMeldScore(gameid, playerid);
+        int partnerScore = getMeldScore(gameid, getPartner(gameid,playerid));
+        return playerScore+partnerScore;
+    }
+
+    /**
+     * determines what initial meld value must be surpassed
+     * @param gameId
+     * @param playerId
+     * @return
+     */
+    public int getInitialMeldValueConstraint(int gameId, int playerId){
+        if(getTotalMeldScore(gameId, playerId) > 0){
+            return 0; //already melded
+        }
+        int score = getTotalScore(gameId, playerId);
+        if (score < 0){
+            return 15;
+        }
+        else if(score < 1500){
+            return 50;
+        }
+        else if(score < 3000){
+            return 90;
+        }
+        else{
+            return 120;
+        }
+    }
+
+    /**
+     * Determines a players total contribution thus far
+     * @param gameid the game
+     * @param playerid the player
+     * @return currentMeld worth + sum of scores from previous rounds
+     */
+    public int getPlayerScore(int gameid, int playerid) {
+        int playerScore = pDao.getScore(gameid, playerid);
+        int playerMeldScore = getMeldScore(gameid, playerid);
+        return (playerScore + playerMeldScore);
     }
 }

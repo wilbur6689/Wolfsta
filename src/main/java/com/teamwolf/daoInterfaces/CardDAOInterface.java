@@ -1,7 +1,6 @@
 package com.teamwolf.daoInterfaces;
 
-import com.teamwolf.beans.Card;
-import com.teamwolf.enums.CardEnum;
+import com.teamwolf.enums.Card;
 
 import java.util.ArrayList;
 

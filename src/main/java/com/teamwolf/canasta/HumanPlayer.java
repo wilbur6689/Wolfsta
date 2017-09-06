@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class HumanPlayer extends CanastaPlayer{
 
-    public HumanPlayer(int playerId, int playerNumber, int user_id, int game_id, int team_team_id, int team_number){
+    public HumanPlayer(int playerId, int playerNumber, int user_id, int game_id, int team_team_id, int team_number, ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard){
         this.setPlayerId(playerId);
         this.setPlayerNumber(playerNumber);
         this.setScore(0);
@@ -14,20 +14,24 @@ public class HumanPlayer extends CanastaPlayer{
         this.setGame_id(game_id);
         this.setTeam_team_id(team_team_id);
         this.setTeam_number(team_number);
+        this.hand = hand;
+        this.meld = meld;
+        this.opponentMeld = opponentMeld;
+        this.discard = discard;
     }
 
     @Override
-    protected void draw(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
+    protected void draw() {
         //Handled elsewhere for humans
     }
 
     @Override
-    protected void meld(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
+    protected void meld() {
         //Handled elsewhere for humans
     }
 
     @Override
-    protected void discard(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard) {
+    protected void discard() {
         //Handled elsewhere for humans
     }
 }

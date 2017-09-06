@@ -43,4 +43,12 @@ public interface PlayerDAOInterface {
      * @return playerId of player in a certain position
      */
     int getPlayerId(int gameId, int playerNumber);
+
+    /**
+     * fetches the current score of the player
+     * @param gameid the game
+     * @param playerid the player
+     * @return score of the player
+     */
+    int getScore(int gameid, int playerid);
 }

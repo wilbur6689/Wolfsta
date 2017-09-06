@@ -6,13 +6,16 @@ import com.teamwolf.enums.CardEnum;
 import java.util.ArrayList;
 
 public abstract class CanastaPlayer extends Player{
+    ArrayList<CardEnum> hand;
+    ArrayList<CardEnum> meld;
+    ArrayList<CardEnum> opponentMeld;
+    CardEnum discard;
 
-
-    public void makeMove(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard){
+    public void makeMove(){
         if(isStock()){
-            draw(hand, meld, opponentMeld, discard);
-            meld( hand,  meld,  opponentMeld, discard);
-            discard( hand, meld,  opponentMeld, discard);
+            draw();
+            meld();
+            discard();
         }
         else{
             //TODO
@@ -31,16 +34,16 @@ public abstract class CanastaPlayer extends Player{
     /**
      * decide whether to draw from discard
      */
-    protected abstract void draw(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
+    protected abstract void draw();
 
     /**
      *decide whether or not to make melds
      */
-    protected abstract void meld(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
+    protected abstract void meld();
 
     /**
      *decide what to discard
      */
-    protected abstract void discard(ArrayList<CardEnum> hand, ArrayList<CardEnum> meld, ArrayList<CardEnum> opponentMeld, CardEnum discard);
+    protected abstract void discard();
 
 }
