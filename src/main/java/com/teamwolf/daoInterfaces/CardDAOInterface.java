@@ -1,45 +1,38 @@
 package com.teamwolf.daoInterfaces;
 
+import com.teamwolf.beans.*;
 import com.teamwolf.enums.Card;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
 
 public interface CardDAOInterface {
 
     /**
-     * initializes a deck of 108 cards (player id for cards in deck is 0?)
-     * @param gameId id of games the cards are for
+     * adds a card
+     * @param c the card
+     * @return the card
      */
-    void createDeck(int gameId);
+    CardLookup add(CardLookup c);
 
     /**
-     * changes a card in the stock(CardState 1) to in the hand(CardState 2) of a given player
-     * !!if it is a red 3 it is added to the meld instead and the method is recalled!!
-     * @param playerId player that is drawing
-     * @return true except when a 3 was drawn and the stock is now empty(or if called when stock was empty which shouldn't happen)
+     * gets a card from cardLookup given certain constraints
+     * @param constraints the criteria
+     * @return the card desired
      */
-    boolean drawFromStock(int gameId, int playerId);
+    CardLookup getByCompositeKey(Map<String, Object> constraints);
 
     /**
-     * Removes a card from the stock(1) and places it on the top(4) of the discard pile
-     * !!if there is a card on top already it is moved to discard(3)
-     * @return int referring to the Card
+     * gets multiple cards from cardLookup given certain constraints
+     * @param constraints the criteria
+     * @return the cards desired
      */
-    int drawToTop(int gameId);
+    Collection<CardLookup> getByCompositeMap(Map<String, Object> constraints);
 
     /**
-     * gets a list of cards in a given players meld
-     * @param gameId the game
-     * @param playerId the player who owns the meld
-     * @return an arrayList of Cards that have the corresponding playerid and are in a meld
+     *
+     * @param drew
      */
-    ArrayList<Card> getCurrentMeld(int gameId, int playerId);
-
-    /**
-     * updates cards to reflect they've been melded
-     * @param gameId the game
-     * @param playerId the player that is melding
-     * @param meld an array of the cardIds that are in this meld
-     */
-    void addMeld(int gameId, int playerId, int[] meld);
+    void update(CardLookup drew);
 }
