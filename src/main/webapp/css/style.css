@@ -34,6 +34,8 @@ h1 h4 {
 .container {
     padding-left: auto;
     padding-right: auto;
+    margin: auto;
+    width: 80%;
 }
 
 #loginDiv {
@@ -84,9 +86,36 @@ input {
     border-radius: 10px;
     margin: 10px;
     text-align: center;
+    padding: 25px;
+}
+.hand{
+    cursor: pointer;
 }
 
+form {
+    background-color: lightgrey;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 25px;
+}
 
+.fieldset_auto_width{
+    display: inline-block;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: black;
+    color: white;
+}
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: red;
+    color:black;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: navy;
+    color: white;
+}
 
 /* The Modal (background) */
 .modal {
