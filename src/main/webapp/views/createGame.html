@@ -1,16 +1,10 @@
 <title> Create Game </title>
-<style>
-    .center{
-        margin: auto;
-        margin-top: 200px;
-        width: 30%;
-    }
-    .fieldset_auto_width{
-        display: inline-block;
-    }
-</style>
-<div class="center">
+
+<div class="container">
+    
     <form>
+            <h2>Create Game</h2>
+            <hr>
             <fieldset class="fieldset_auto_width">
             <div>
                 <input ng-model="game.name" id="GameName" placeholder="Enter Game Name">
@@ -18,20 +12,22 @@
             </div>
             <br/>
             <div>
-                Privacy Setting: 
-                <select ng-model="game.accessibility" ng-repeat="view in viewTypes">
-                </select>
+                <label>Privacy Setting:</label><br> 
+                <input type="radio" name="privSetting" value="public" checked>Public</input><br>
+                <input type="radio" name="privSetting" value="private">Private</input>  
+                
             </div>
-            <br/>
+            <br>
             <div>
-                Number of Players: 
-                <select ng-model="game.playerNumber" ng-repeat="person in players">
-                </select>
-                Time limit: 
-                <select ng-model="game.timelimit" ng-repeat="limit in timer">
-                </select>
+                <label>Number of Players:</label> 
+                <input type="number" value="playerNumber" placeholder="Number of Players...">
             </div>
-            <br/>
+            <br>
+            <div>
+                <label>Time limit: </label> 
+                <input type="number" value="timeLimit" placeholder="Number of Minutes...">
+            </div>
+            <br>
             <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>
             <button type="submit" ng-click="mainMenu()" id="submit">Cancel</button>
         </fieldset>
