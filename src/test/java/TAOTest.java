@@ -10,7 +10,7 @@ public class TAOTest
     public void Users()
     {
         Gson geeson = new Gson();
-        TAO<User> UserTao = new TAO<>(new User());
+        TAOClass<User> UserTao = new TAOClass<>(new User());
 
 
         User user1 = UserTao.getById(1);
@@ -45,7 +45,7 @@ public class TAOTest
     public void Teams()
     {
         Gson geeson = new Gson();
-        TAO<Team> TeamTao = new TAO<>(new Team());
+        TAOClass<Team> TeamTao = new TAOClass<>(new Team());
 
 
         Team Team1 = TeamTao.getById(1);
@@ -56,7 +56,7 @@ public class TAOTest
     public void Rewards()
     {
         Gson geeson = new Gson();
-        TAO<Reward> RewardTao = new TAO<>(new Reward());
+        TAOClass<Reward> RewardTao = new TAOClass<>(new Reward());
 
 
         Reward Reward1 = RewardTao.getById(1);
@@ -67,7 +67,7 @@ public class TAOTest
     public void Players()
     {
         Gson geeson = new Gson();
-        TAO<Player> PlayerTao = new TAO<>(new Player());
+        TAOClass<Player> PlayerTao = new TAOClass<>(new Player());
 
 
         Player Player1 = PlayerTao.getById(1);
@@ -78,7 +78,7 @@ public class TAOTest
     public void Games()
     {
         Gson geeson = new Gson();
-        TAO<Game> GameTao = new TAO<>(new Game());
+        TAOClass<Game> GameTao = new TAOClass<>(new Game());
 
 
         Game Game1 = GameTao.getById(1);
@@ -89,7 +89,7 @@ public class TAOTest
     public void FriendLookUps()
     {
         Gson geeson = new Gson();
-        TAO<FriendLookUp> FriendLookUpTao = new TAO<>(new FriendLookUp());
+        TAOClass<FriendLookUp> FriendLookUpTao = new TAOClass<>(new FriendLookUp());
 
 
         FriendLookUp FriendLookUp1 = FriendLookUpTao.getById(1);

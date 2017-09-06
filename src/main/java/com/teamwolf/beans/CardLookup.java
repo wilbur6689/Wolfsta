@@ -9,7 +9,7 @@ import java.io.*;
 
 @Entity
 @Table(name="CARD_LOOKUP")
-public class cardLookup implements DataObject
+public class CardLookup implements DataObject
 {
     private Integer cardId;
     private Card    card;
