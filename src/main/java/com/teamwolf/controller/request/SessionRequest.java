@@ -1,5 +1,7 @@
 package com.teamwolf.controller.request;
 
+
+
 public class SessionRequest
 {
     private String token;

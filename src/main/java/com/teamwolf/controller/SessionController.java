@@ -7,25 +7,55 @@ import com.teamwolf.controller.response.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+
 @RestController
 @RequestMapping(path = "/session")
-public class SessionController
+public class SessionController extends BaseController
 {
-    private Gson geeson = new Gson(); //TODO: dependency injection
 
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+    public void notFound()
+    {
+        System.out.println("SessionController");
+        throw new NotFoundException("SessionServlet");
+    }
 
-    @RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(consumes = "*/*",
             produces = MediaType.APPLICATION_JSON_VALUE,
             path = "/login",
-            method = RequestMethod.POST)
-    public String login(@RequestBody String json)
+            method = {RequestMethod.POST})
+    public String login(@RequestBody SessionRequest request)
     {
-        SessionRequest req = geeson.fromJson(json, SessionRequest.class);
 
-
+        System.out.println(this.getGeeson().toJson(request));
         SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
 
-        return geeson.toJson(resp);
+        return this.getGeeson().toJson(resp);
+    }
+    @RequestMapping(consumes = "*/*",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            path = "/logout",
+            method = {RequestMethod.POST})
+    public String logout(@RequestBody SessionRequest request)
+    {
+
+        System.out.println(this.getGeeson().toJson(request));
+        SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
+
+        return this.getGeeson().toJson(resp);
+    }
+    @RequestMapping(consumes = "*/*",
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            path = "/check",
+            method = {RequestMethod.POST})
+    public String check(@RequestBody SessionRequest request)
+    {
+
+        System.out.println(this.getGeeson().toJson(request));
+        SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
+
+        return this.getGeeson().toJson(resp);
     }
 
 }
