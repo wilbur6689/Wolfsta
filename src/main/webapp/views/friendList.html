@@ -14,23 +14,25 @@
         color: white;
     }
 </style>
-<div class="container -fluid">
-    <div>
-        <table class="table table-hover table-striped table-bordered">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-hover">
             <thead>
-              <tr>
+                <tr>
                 <th>Avatar</th>
                 <th>Username</th>
                 <th>Rank</th>
-              </tr>
+                </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="friend in friendlist">
+                <tr ng-repeat="friend in friend_list">
                 <td>{{friend.avatar}}</td>
                 <td>{{friend.username}}</td>
                 <td>{{friend.rank}}</td>
-              </tr>
+                </tr>
             </tbody>
-          </table>
+            </table>
+        </div>
     </div>
 </div>

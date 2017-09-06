@@ -61,6 +61,11 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
     $scope.home = function(){
         $location.path('/home');
     }
+    var friend_list = [
+        {'avatar' : '1', 'username' : 'person_one', 'rank' : '3' },
+        {'avatar' : '1', 'username' : 'person_two', 'rank' : '2' }
+        ];
+
 
  });
 
