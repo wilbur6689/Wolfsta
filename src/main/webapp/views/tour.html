@@ -2,20 +2,37 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container">
-    <div>
-        <div >
-            <div>
-            <h4>Welcome, Please Log in Below:</h4>
-            <input type="text" id="userName" placeholder="username" />
-            </br>
-            <input type="text" id="userPassword" placeholder="password" />
-            </br>
-            <div class="wrapper">
-            <span class="group-btn">     
-                 <button type="submit" ng-click="login()">Login</button> 
-            </span>
-            </div>
-            </div>
+    
+    <div class="row"> 
+        <div class="col-md-12">       
+            <h2>Create Tournaments:</h2>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Create game:</h3>
+            <p>this is the place for creating the game</p>
+            <span class="group-btn">     
+                <button type="submit" ng-click="createTour(tour)">create Tournament</button> 
+           </span>
+            <span class="group-btn">     
+                <button type="submit" ng-click="mainMenu()">back to Main Menu</button> 
+           </span>
+        </div>
+    </div>
+    <div class="row"> 
+        <div class="col-md-12">       
+            <h2>Current Tournaments:</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Game #321</h3>
+            <p>this is a fun Tournament</p>
+            <span class="group-btn">     
+                <button type="submit" ng-click="mainMenu()">back to Main Menu</button> 
+           </span>
+        </div>
+    </div>
+
 </div>
