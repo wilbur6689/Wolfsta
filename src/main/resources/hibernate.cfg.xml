@@ -28,6 +28,8 @@
         <mapping class="com.teamwolf.beans.Game"/>
         <mapping class="com.teamwolf.beans.Player"/>
         <mapping class="com.teamwolf.beans.Reward"/>
+        <mapping class="com.teamwolf.beans.UserSession"/>
+        <mapping class="com.teamwolf.beans.CardLookup"/>
 
     </session-factory>
 </hibernate-configuration>

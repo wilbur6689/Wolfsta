@@ -1,11 +1,18 @@
 package com.teamwolf.beans;
 
-import java.util.Date;
+import com.teamwolf.dataAccess.*;
 
-public class UserSession {
-    private int token = 0;
+import javax.persistence.*;
+import java.io.*;
+import java.sql.*;
+
+@Entity
+@Table(name="USER_SESSION")
+public class UserSession implements DataObject
+{
+    private String token;
     private int userId = 0;
-    private Date startTime;
+    private Timestamp startTime;
 
     /**
      * Constructor
@@ -14,14 +21,16 @@ public class UserSession {
 
     }// public UserSession()
 
-    public int getToken() {
+    @Id
+    public String getToken() {
         return token;
     }// public int getToken()
 
-    public void setToken(int token) {
+    public void setToken(String token) {
         this.token = token;
     }// public void setToken(int token)
 
+    @Column(name="USER_ID")
     public int getUserId() {
         return userId;
     }// public int getUserId()
@@ -30,11 +39,19 @@ public class UserSession {
         this.userId = userId;
     }// public void setUserId(int userId)
 
-    public Date getStartTime() {
+    @Column(name = "START_TIME")
+    public Timestamp getStartTime() {
         return startTime;
     }// public Date getStartTime()
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }// public void setStartTime(Date startTime)
+
+    @Transient
+    @Override
+    public Serializable getID()
+    {
+        return this.getToken();
+    }
 }// public class UserSession

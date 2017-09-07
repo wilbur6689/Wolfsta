@@ -4,6 +4,7 @@ package com.teamwolf.controller;
 import com.google.gson.*;
 import com.teamwolf.controller.request.*;
 import com.teamwolf.controller.response.*;
+import com.teamwolf.controller.sessionlogic.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +26,12 @@ public class SessionController extends BaseController
             produces = MediaType.APPLICATION_JSON_VALUE,
             path = "/login",
             method = {RequestMethod.POST})
-    public String login(@RequestBody SessionRequest request)
+    public String login(@RequestBody SessionRequest request, Token token)
     {
 
-        System.out.println(this.getGeeson().toJson(request));
-        SessionResponse resp = new SessionResponse("loggedin","you arent really loggedin",-1,"this is used for errors",true);
+        String tkn = token.authenticate(request.getUsername(),request.getPassword());
+
+        SessionResponse resp = new SessionResponse("loggedin",tkn,token.getUser().getUserid(),"",true);
 
         return this.getGeeson().toJson(resp);
     }

@@ -30,9 +30,15 @@ public class TAOClass<T extends DataObject> implements TAO<T>
     }
     private static SessionFactory getSF() { return badProgramming; }
 
+
     public TAOClass(T generic)
     {
         this.sessionFactory = TAOClass.getSF();
+        this.classOF = generic.getClass();
+    }
+    public TAOClass(T generic,SessionFactory sf)
+    {
+        this.sessionFactory = sf;
         this.classOF = generic.getClass();
     }
     protected Session getSession()

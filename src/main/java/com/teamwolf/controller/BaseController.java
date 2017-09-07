@@ -16,6 +16,10 @@ public class BaseController
         return this.getGeeson().toJson(new Response(MediaType.APPLICATION_JSON_VALUE));
     }
 
+    //TODO: set status 405
+    @ExceptionHandler(AuthorizationException.class)
+    public String error405(Exception ex) { return geeson.toJson(new Response(ex.getMessage(),false)); }
+
     @ExceptionHandler(Throwable.class)
     public String error(Exception ex)
     {
