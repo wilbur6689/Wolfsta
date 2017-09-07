@@ -18,7 +18,7 @@ public class SessionController extends BaseController
     public void notFound()
     {
         System.out.println("SessionController");
-        throw new NotFoundException("SessionServlet");
+        throw new NotFoundException("url not found in SessionController");
     }
 
     @RequestMapping(consumes = "*/*",
@@ -29,7 +29,7 @@ public class SessionController extends BaseController
     {
 
         System.out.println(this.getGeeson().toJson(request));
-        SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
+        SessionResponse resp = new SessionResponse("loggedin","you arent really loggedin",-1,"this is used for errors",true);
 
         return this.getGeeson().toJson(resp);
     }
@@ -41,7 +41,7 @@ public class SessionController extends BaseController
     {
 
         System.out.println(this.getGeeson().toJson(request));
-        SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
+        SessionResponse resp = new SessionResponse("loggedin","you arent really loggedin",-1,"this is used for errors",true);
 
         return this.getGeeson().toJson(resp);
     }
@@ -53,7 +53,7 @@ public class SessionController extends BaseController
     {
 
         System.out.println(this.getGeeson().toJson(request));
-        SessionResponse resp = new SessionResponse("loggedin","true","you arent really loggedin",-1,"this is used for errors");
+        SessionResponse resp = new SessionResponse("loggedin","you arent really loggedin",-1,"this is used for errors",true);
 
         return this.getGeeson().toJson(resp);
     }
