@@ -2,20 +2,14 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <div class="container">
-    <div>
-        <div >
-            <div id="loginDiv">
-            <h4>Welcome, Please Log in Below:</h4>
-            <input ng-model="player.username" id="username" placeholder="username" />
-            </br>
-            <input ng-model="player.password" id="userPassword" placeholder="password" />
-            </br>
-            <div class="loginSubmit">
-            <span class="group-btn">     
-                 <button type="submit" ng-click="login(player)">Login</button> 
-            </span>
-            </div>
-            </div>
+    <div class="col-md-12">
+        <h4>Welcome, Please Log in Below:</h4>
+        <input ng-model="player.username" id="username" placeholder="username" />
+        </br>
+        <input ng-model="player.password" id="userPassword" placeholder="password" />
+        </br>
+        <div class="loginSubmit">    
+            <button type="submit" ng-click="login(player)">Login</button> 
         </div>
     </div>
 </div>

@@ -1,8 +1,8 @@
 
 
-var bankApp = angular.module("wolfsta", ["ngRoute"]);
+var wolfsta = angular.module("wolfsta", ["ngRoute"]);
 
-bankApp.config(function($routeProvider) {
+wolfsta.config(function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "views/login.html",
@@ -31,10 +31,15 @@ bankApp.config(function($routeProvider) {
         controller : 'joinCtrl'
     })
 
+        .when('/rules',{
+            templateUrl : "views/rules.html",
+            controller : 'rulesCtrl'
+        })
+
 });
 
 
-bankApp.controller('loginCtrl', function($scope, $http, $location){
+wolfsta.controller('loginCtrl', function($scope, $http, $location){
    
     $scope.login = function(player){
         $http({method : 'POST', url : '/ers_app/signIn/json', data : JSON.stringify(player)}).then(function (response){
@@ -48,7 +53,7 @@ bankApp.controller('loginCtrl', function($scope, $http, $location){
     }
 });
 
-bankApp.controller('mainMenuCtrl', function($scope, $location){
+wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -67,16 +72,20 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
         $location.path('/tour');
     }
 
+    $scope.rules = function(){
+        $location.path('/rules');
+    }
+
  });
 
- bankApp.controller('createGameCtrl', function($scope, $location){
+ wolfsta.controller('createGameCtrl', function($scope, $location){
 
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
  });
 
- bankApp.controller('friendListCtrl', function($scope, $location){
+ wolfsta.controller('friendListCtrl', function($scope, $location){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
@@ -88,26 +97,33 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('tourCtrl', function($scope, $location){
+ wolfsta.controller('tourCtrl', function($scope, $location){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
 
  });
 
- bankApp.controller('gameCtrl', function($scope, $location){
+ wolfsta.controller('gameCtrl', function($scope, $location){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
 
  });
 
- bankApp.controller('joinCtrl', function($scope, $location){
+ wolfsta.controller('joinCtrl', function($scope, $location){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
 
  });
+
+ wolfsta.controller('rulesCtrl', function($scope, $location){
+     $scope.mainMenu = function(){
+         $location.path('/mainMenu');
+     }
+
+  });
 
 
 
