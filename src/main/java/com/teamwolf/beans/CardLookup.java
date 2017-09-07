@@ -83,4 +83,13 @@ public class CardLookup implements DataObject
     {
         return this.getCardId();
     }
+
+    public boolean isWild() {
+        if (this.getCard().getRank() == 2 || this.getCard().getRank() == 14){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

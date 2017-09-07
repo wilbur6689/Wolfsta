@@ -31,8 +31,8 @@ public interface CardDAOInterface {
     Collection<CardLookup> getByCompositeMap(Map<String, Object> constraints);
 
     /**
-     *
-     * @param drew
+     *updates a card in database
+     * @param card updated card
      */
-    void update(CardLookup drew);
+    void update(CardLookup card);
 }

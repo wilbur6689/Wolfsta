@@ -17,4 +17,11 @@ public interface GameDAOInterface {
      * @return the game
      */
     public Game getGame(int gameId);
+
+    /**
+     * updates the game in the database
+     * @param g the game
+     * @return the game
+     */
+    Game update(Game g);
 }

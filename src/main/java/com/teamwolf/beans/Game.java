@@ -15,12 +15,12 @@ public class Game implements DataObject{
     private int players = 0;
     private int turn = 0;
     private int round; //round number (used for determining who dealer is
-    //TODO time limit
-    //private int timeLimit = 0;
+  private int timeLimit = 0;
     private Timestamp gameStartDate;
     private Timestamp gameResolved;
-    private int gameWon = 0;//TODO what are these for?
+    private int gameWon = 0;
     private int gameLost = 0;
+    private int gameState;
     // protected Logger log = Logger.getRootLogger();
 
     /**
@@ -42,6 +42,23 @@ public class Game implements DataObject{
         this.players = players;
         this.turn = 1;
         this.round = 1;
+        this.gameState = 1;
+    }
+
+    public int getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(int timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public int getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(int gameState) {
+        this.gameState = gameState;
     }
 
     @Id
