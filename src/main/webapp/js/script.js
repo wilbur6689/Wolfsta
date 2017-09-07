@@ -33,12 +33,28 @@ bankApp.config(function($routeProvider) {
 
 });
 
+bankApp.service('logoutService', function($scope, $http, $location){
 
-bankApp.controller('loginCtrl', function($scope, $http, $location){
+    $scope.logout = function(){
+        $http({method : 'POST', url : './services/session/logout', data : { token : logoutTokenVar}})
+        .then(function(response){
+            if(response.data.success == true){
+                $location.path('/');
+            }
+            else{
+                alert(response.data.message);
+            }
+        })
+    }
+});
+
+bankApp.controller('loginCtrl', function($scope, $rootScope, $http, $location){
    
     $scope.login = function(player){
-        $http({method : 'POST', url : '/ers_app/signIn/json', data : JSON.stringify(player)}).then(function (response){
-            if(response.data != null){
+        $http({method : 'POST', url : './services/session/login', data : JSON.stringify(player)})
+        .then(function (response){
+            if(response.data == true){
+                $rootScope.logoutTokenVar = response.data.token;
                 $location.path('/mainMenu');
             }
             else {
@@ -48,7 +64,7 @@ bankApp.controller('loginCtrl', function($scope, $http, $location){
     }
 });
 
-bankApp.controller('mainMenuCtrl', function($scope, $location){
+bankApp.controller('mainMenuCtrl', function($scope, $location, logout){
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -69,14 +85,14 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('createGameCtrl', function($scope, $location){
+ bankApp.controller('createGameCtrl', function($scope, $location, logout){
 
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
  });
 
- bankApp.controller('friendListCtrl', function($scope, $location){
+ bankApp.controller('friendListCtrl', function($scope, $location, logout){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
@@ -88,21 +104,21 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('tourCtrl', function($scope, $location){
+ bankApp.controller('tourCtrl', function($scope, $location, logout){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
 
  });
 
- bankApp.controller('gameCtrl', function($scope, $location){
+ bankApp.controller('gameCtrl', function($scope, $location, logout){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
 
  });
 
- bankApp.controller('joinCtrl', function($scope, $location){
+ bankApp.controller('joinCtrl', function($scope, $location, logout){
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
