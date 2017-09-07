@@ -80,15 +80,18 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
  wolfsta.controller('createGameCtrl', function($scope, $location){
 
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
  });
 
  wolfsta.controller('friendListCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
+
     $scope.friend_list = [
         {avatar : '1', username : 'person_one', rank : '3'},
         {avatar : '1', username : 'person_two', rank : '2' }
@@ -98,32 +101,43 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
  });
 
  wolfsta.controller('tourCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
 
  });
 
  wolfsta.controller('gameCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
 
  });
 
  wolfsta.controller('joinCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+
+    $scope.game1 = "game1";
+    $scope.game2 = "garbage"
+
+    $scope.createGame = function(){
+        $location.path('/createGame');
     }
+
+    
 
  });
 
  wolfsta.controller('rulesCtrl', function($scope, $location){
-     $scope.mainMenu = function(){
-         $location.path('/mainMenu');
-     }
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
+    }
 
   });
+
+
 
 
 
