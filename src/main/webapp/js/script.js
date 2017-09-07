@@ -64,7 +64,7 @@ bankApp.controller('loginCtrl', function($scope, $rootScope, $http, $location){
     }
 });
 
-bankApp.controller('mainMenuCtrl', function($scope, $location, logout){
+bankApp.controller('mainMenuCtrl', function($scope, $location){
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -82,47 +82,56 @@ bankApp.controller('mainMenuCtrl', function($scope, $location, logout){
     $scope.tour = function(){
         $location.path('/tour');
     }
-
  });
 
- bankApp.controller('createGameCtrl', function($scope, $location, logout){
+ bankApp.controller('createGameCtrl', function($scope, $location){
 
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
  });
 
- bankApp.controller('friendListCtrl', function($scope, $location, logout){
+ bankApp.controller('friendListCtrl', function($scope, $http, $location){
+    
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
+    
     $scope.friend_list = [
         {avatar : '1', username : 'person_one', rank : '3'},
         {avatar : '1', username : 'person_two', rank : '2' }
         ];
-
-
+    $scope.input = '';
+    $http({method : 'POST', url : './user/{id}/friends', data : JSON.stringify(input)})
+    .then(function (response){
+        if(response.data != null){
+            friend_list.push(response.data.friends);
+        }
+        else{
+            alert("Could not get friends");
+        }
+    });
  });
 
- bankApp.controller('tourCtrl', function($scope, $location, logout){
+ bankApp.controller('tourCtrl', function($scope, $location){
+    
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
-
  });
 
- bankApp.controller('gameCtrl', function($scope, $location, logout){
+ bankApp.controller('gameCtrl', function($scope, $location){
+    
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    } 
+ });
+
+ bankApp.controller('joinCtrl', function($scope, $location){
+    
     $scope.mainMenu = function(){
         $location.path('/mainMenu');
     }
-
- });
-
- bankApp.controller('joinCtrl', function($scope, $location, logout){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
-    }
-
  });
 
 
