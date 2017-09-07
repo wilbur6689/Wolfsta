@@ -38,12 +38,33 @@ wolfsta.config(function($routeProvider) {
 
 });
 
+wolfsta.service('logoutService', function($scope, $http, $location){
 
+}
+                
 wolfsta.controller('loginCtrl', function($scope, $http, $location){
+
+    $scope.logout = function(){
+        $http({method : 'POST', url : './services/session/logout', data : { token : logoutTokenVar}})
+        .then(function(response){
+            if(response.data.success == true){
+                $location.path('/');
+            }
+            else{
+                alert(response.data.message);
+            }
+        })
+    }
+});
+
+wolfsta.controller('loginCtrl', function($scope, $rootScope, $http, $location){
+
    
     $scope.login = function(player){
-        $http({method : 'POST', url : '/ers_app/signIn/json', data : JSON.stringify(player)}).then(function (response){
-            if(response.data != null){
+        $http({method : 'POST', url : './services/session/login', data : JSON.stringify(player)})
+        .then(function (response){
+            if(response.data == true){
+                $rootScope.logoutTokenVar = response.data.token;
                 $location.path('/mainMenu');
             }
             else {
@@ -53,7 +74,8 @@ wolfsta.controller('loginCtrl', function($scope, $http, $location){
     }
 });
 
-wolfsta.controller('mainMenuCtrl', function($scope, $location){
+wolfsta.controller('mainMenuCtrl', function($scope, $location, logout){
+
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -78,7 +100,8 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
- wolfsta.controller('createGameCtrl', function($scope, $location){
+ wolfsta.controller('createGameCtrl', function($scope, $location, logout){
+
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -86,10 +109,12 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
     }
  });
 
+
  wolfsta.controller('friendListCtrl', function($scope, $location){
     $scope.joinGame = function(){
         $location.path('/joinGame');
         //makes a call to DB to get current games and loads them
+
     }
 
     $scope.friend_list = [
@@ -100,18 +125,22 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
+
  wolfsta.controller('tourCtrl', function($scope, $location){
     $scope.joinGame = function(){
         $location.path('/joinGame');
         //makes a call to DB to get current games and loads them
+
     }
 
  });
+
 
  wolfsta.controller('gameCtrl', function($scope, $location){
     $scope.joinGame = function(){
         $location.path('/joinGame');
         //makes a call to DB to get current games and loads them
+
     }
 
  });
@@ -123,6 +152,7 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
     $scope.createGame = function(){
         $location.path('/createGame');
+
     }
 
     
