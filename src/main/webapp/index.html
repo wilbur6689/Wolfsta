@@ -8,11 +8,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css" media="screen">
+		#container{
+			 margin-top: 40px;
+			 margin-right: 40px;
+			 margin-left: 40px;
+		}
+		</style>
     <title>Wolfsta Game</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     
 </head>
 <body ng-app="wolfsta">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/wolfsta/#!/mainMenu"><img src="images/WolfLogo.png" width="60px" height="60px"></a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/wolfsta/#!/mainMenu">Home</a></li>
+                <li><a href="/wolfsta/#!/createGame">Create Game</a></li>
+                <li><a href="/wolfsta/#!/friendList">Friends</a></li>
+                <li><a href="/wolfsta/#!/tour">Tournaments</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <div ng-view></div>
 

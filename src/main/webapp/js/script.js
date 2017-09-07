@@ -26,77 +26,82 @@ bankApp.config(function($routeProvider) {
         controller : 'tourCtrl'
     })
 
+    .when('/joinGame',{
+        templateUrl : "views/joinGame.html",
+        controller : 'joinCtrl'
+    })
+
 });
 
 
 bankApp.controller('loginCtrl', function($scope, $location){
    
     $scope.login = function(){
-        $location.path('/home');
+        $location.path('/mainMenu');
     }
 });
 
 bankApp.controller('mainMenuCtrl', function($scope, $location){
-    //deposit function 
-    $scope.deposit = function(){
-        $location.path('/deposit');
+
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
-    //withdraw funciton
-    $scope.withdraw = function(){
-        $location.path('/withdraw');
+
+    $scope.createGame = function(){
+        $location.path('/createGame');
+    }
+
+    $scope.friendList = function(){
+        $location.path('/friendList');
+    }
+
+    $scope.tour = function(){
+        $location.path('/tour');
     }
 
  });
 
  bankApp.controller('createGameCtrl', function($scope, $location){
-    //goHome function 
-    $scope.depHome = function(){
-        $location.path('/home');
-    }
 
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    }
  });
 
  bankApp.controller('friendListCtrl', function($scope, $location){
-    //goHome function 
-    $scope.home = function(){
-        $location.path('/home');
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
     }
+    $scope.friend_list = [
+        {avatar : '1', username : 'person_one', rank : '3'},
+        {avatar : '1', username : 'person_two', rank : '2' }
+        ];
+
 
  });
 
  bankApp.controller('tourCtrl', function($scope, $location){
-    //goHome function 
-    $scope.displayImage = function(){
-        $location.path('/displayImage');
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
     }
 
  });
 
- // Get the modal
-var modal = document.getElementById('friends');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal 
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+ bankApp.controller('gameCtrl', function($scope, $location){
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
     }
-}
+
+ });
+
+ bankApp.controller('joinCtrl', function($scope, $location){
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    }
+
+ });
+
 
 
 

@@ -1,5 +1,17 @@
 body {
-    background-color: #ddd;
+    background-color: #FFFFFF;
+}
+
+.navbar{
+    min-height: 100px;
+}
+.nav-brand{
+    padding: 10px;
+}
+
+.navbar-nav {
+    float: right;
+    padding: 20px;
 }
 .login {
     margin-top: 25px !important;
@@ -15,8 +27,94 @@ body {
     text-align: center;
 }
 
-h1 {
+h1 h4 {
     text-align: center;
+}
+
+.container {
+    padding-left: auto;
+    padding-right: auto;
+    margin: auto;
+    width: 80%;
+}
+
+#loginDiv {
+    border: solid black 3px;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    min-height: 200px;
+    min-width: 320px;
+    max-width: 400px;
+    text-align: center;
+
+}
+
+input {
+    margin-top: 15px;
+}
+.loginSubmit {
+    margin-top: 15px;
+}
+
+.row {
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+/* .center {
+    margin: 0 auto;
+    width: 80%;
+} */
+
+.col-md-4{
+    background-color: lightgrey;
+    border: solid black 3px;
+    border-radius: 10px;
+    margin: 10px;
+    width: auto;
+    min-width: 30%;
+    height: auto;
+    min-height: 100px; 
+    overflow: wrap;
+    text-align: center;
+}
+.col-md-12{
+    background-color: lightgrey;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 25px;
+}
+.hand{
+    cursor: pointer;
+}
+
+form {
+    background-color: lightgrey;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 25px;
+}
+
+.fieldset_auto_width{
+    display: inline-block;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: black;
+    color: white;
+}
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: red;
+    color:black;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: navy;
+    color: white;
 }
 
 /* The Modal (background) */
