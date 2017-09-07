@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import java.io.*;
 import java.util.*;
 
-@WebServlet(urlPatterns = "/")
+//@WebServlet(urlPatterns = "/")
 public class IndexServlet extends HttpServlet
 {
 

@@ -5,10 +5,11 @@ import com.teamwolf.beans.Game;
 public interface GameDAOInterface {
 
     /**
-     * initializes a new game in database
-     * @return game id of a new game
+     * adds a game to the database
+     * @param g the game to be added
+     * @return the game that was added
      */
-    public int newGame();
+    public Game add(Game g);
 
     /**
      * gets a game of a given Id

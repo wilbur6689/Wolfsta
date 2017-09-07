@@ -1,0 +1,80 @@
+{
+    // "url" refers to a location under /services/ : like "/session/login" -> "http://localhost/services/session/login"
+    // any "url" that has a "json" requires a post
+    //this is a clase that all reponses inherit from, an empty object means that only these fields are used
+    "baseRespose":
+    {
+        "message":"an optional message about the response, will be the head of a stacktrace",
+        "stacktrace":"an array of stacktrace elements from a stacktrace",
+        "success":"'true' or 'false'"
+    },
+    // "token" items may be removed (proper sessions is a todo item)
+    "session":
+    [
+        {
+            "url": "/session/login",
+            "json": 
+            {
+                "username":"a username",
+                "password":"a password in plaintext"
+            },
+            "response":
+            {
+                
+                "token":"the token that identifies the session",
+                "id": "the user's id"
+            }
+        },
+        {
+            "url": "/session/logout",
+            "json":
+            {
+                "token":"the token that identifies the session"
+            },
+            "response":
+            {
+                "success":"'true' or 'false'"
+            }
+                
+        },
+        {
+            "url": "/session/check",
+            "json":
+            {
+                "token":"the token that identifies the session"
+            },
+            "response":
+            {
+                "status":"'loggedin' or 'loggedout'",
+                "user":"literally a user object"
+            }
+        }
+    ],
+    // this can be public for now
+    "user":
+    [
+        {
+            "url":"/user/{id}",
+            "response":
+            {
+                "user":"literally a user object with no private info"
+            }
+        },
+        {
+            "url":"/user/{id}/friends",
+            "response":
+            {
+                "friends":"literally an array of user object with no private info"
+            }
+        },
+        {
+            "url":"/user/new",
+            "request":"a user object",
+            "response":
+            {
+                
+            }
+        }
+
+    ]
+}
