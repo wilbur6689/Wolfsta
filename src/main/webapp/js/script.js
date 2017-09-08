@@ -33,22 +33,14 @@ wolfsta.config(function($routeProvider) {
         controller : 'rulesCtrl'
     })
 
+
     .when('/tour',{
         templateUrl : "views/tour.html",
         controller : 'tourCtrl'
     })
 
+
 });
-
-
- 
-
-
-
-
-
-
-
 
 
 
