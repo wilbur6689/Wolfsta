@@ -55,6 +55,7 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
     $scope.tour = function(){
         $location.path('/tour');
     }
+ });
 
     $scope.rules = function(){
         $location.path('/rules');
@@ -67,9 +68,48 @@ wolfsta.controller('mainMenuCtrl', function($scope, $location){
 
 
 
+ wolfsta.controller('friendListCtrl', function($scope, $http, $location){
+    
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    }
+    
+    $scope.friend_list = [
+        {avatar : '1', username : 'person_one', rank : '3'},
+        {avatar : '1', username : 'person_two', rank : '2' }
+        ];
+    $scope.input = '';
+    $http({method : 'POST', url : './user/{id}/friends', data : JSON.stringify(input)})
+    .then(function (response){
+        if(response.data != null){
+            friend_list.push(response.data.friends);
+        }
+        else{
+            alert("Could not get friends");
+        }
+    });
+ });
 
+ wolfsta.controller('tourCtrl', function($scope, $location){
+    
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    }
+ });
 
+ wolfsta.controller('gameCtrl', function($scope, $location){
+    
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    } 
+ });
 
+ wolfsta.controller('joinCtrl', function($scope, $location){
+    
+    $scope.mainMenu = function(){
+        $location.path('/mainMenu');
+    }
+ });
 
 
 
