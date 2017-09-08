@@ -559,12 +559,11 @@ public class Canasta {
 
     /**
      * Determines if a particular rank exists in the meld
-     *
-     * @param rank     the rank to check for
+     * @param rank the rank to check for
      * @param teamMeld the meld to look in
      * @return true if the rank has been melded
      */
-    private boolean hasMeld(int rank, ArrayList<CardLookup> teamMeld) {
+    public boolean hasMeld(int rank, ArrayList<CardLookup> teamMeld) {
         for (CardLookup c : teamMeld) {
             if (c.getCard().getRank() == rank) {
                 return true;
@@ -842,10 +841,7 @@ public class Canasta {
     public void discard(Game g, Player p, CardLookup c){
 
         //fetch card that is currently the top of the discard pile
-        Map<String, Object> topConstraints = new HashMap<>();
-        topConstraints.put("game_id", g.getGameId());
-        topConstraints.put("state", CardState.TOP);
-        CardLookup top = cDao.getByCompositeKey(topConstraints);
+        CardLookup top = getTop(g);
 
         //update them
         c.setState(CardState.TOP);
@@ -860,5 +856,12 @@ public class Canasta {
             g.setTurn(1);
         }
         gDao.update(g);
+    }
+
+    public CardLookup getTop(Game g){
+        Map<String, Object> topConstraints = new HashMap<>();
+        topConstraints.put("game_id", g.getGameId());
+        topConstraints.put("state", CardState.TOP);
+        return cDao.getByCompositeKey(topConstraints);
     }
 }

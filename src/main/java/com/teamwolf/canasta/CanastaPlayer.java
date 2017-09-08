@@ -1,13 +1,15 @@
 package com.teamwolf.canasta;
 
+import com.teamwolf.beans.CardLookup;
 import com.teamwolf.beans.Player;
 import com.teamwolf.dataAccess.TAOClass;
 
 public abstract class CanastaPlayer extends Player{
 
     public void makeMove(){
+        CardLookup discard = null;
         if( draw()){
-            meld();
+            meld(discard);
             discard();
         }
         else{
@@ -27,14 +29,15 @@ public abstract class CanastaPlayer extends Player{
 
     /**
      * decide whether to draw from discard
-     * returns true if a draw occured
+     * @return true if a draw occured
      */
     protected abstract boolean draw();
 
     /**
      *decide whether or not to make melds
+     * @param discard the card from the discard pile (null) if not used
      */
-    protected abstract void meld();
+    protected abstract void meld(CardLookup discard);
 
     /**
      *decide what to discard
