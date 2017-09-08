@@ -15,7 +15,7 @@ wolfsta.config(function($routeProvider) {
         controller : 'friendListCtrl'
     })
 
-    .when('/gameCtrl',{
+    .when('/game',{
         templateUrl : 'views/game.html',
         controller : 'gameCtrl'
     })
@@ -23,6 +23,11 @@ wolfsta.config(function($routeProvider) {
     .when('/joinGame',{
         templateUrl : "views/joinGame.html",
         controller : 'joinCtrl'
+    })
+
+    .when('/joinLobby',{
+        templateUrl : "views/joinLobby.html",
+        controller : 'joinLobbyCtrl'
     })
 
     .when("/", {

@@ -36,6 +36,9 @@ wolfsta.controller('joinCtrl', function($scope, $location){
         $scope.filter = {}; 
         }
 
+        $scope.joinLobby = function(user){
+            $location.path('/joinLobby');
+        }
     
         $scope.createGame = function(){
             $location.path('/createGame');

@@ -1,0 +1,28 @@
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container" ng-controller="joinLobbyCtrl">
+    <div class="row"> 
+        <div class="col-md-12">       
+            <h2>Game Lobby</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="floLeft">
+            <h4>Current Players:</h4>        
+                <select size="4" id="joinList" ng-model="selectedPlayer">
+                    <option  ng-repeat="player in playerList" ng-selected="playerList[0]">{{player.player}}</option>
+                </select>
+            </div>
+            <div class="floRight">
+                <h4>Game:</h4>
+                <select ng-model="state" ng-init="state = readyState[0]" ng-options="type for type in readyState"></select>
+                <br>
+                <br>
+                <button type="button" ng-click="startGame(game)">Launch Game</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,4 +9,6 @@ wolfsta.controller('gameCtrl', function($scope, $location){
         //makes a call to DB to get current games and loads them
     }
 
+    $scope.myVar = 'images/can.jpeg';
+
  });
