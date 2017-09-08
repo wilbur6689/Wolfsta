@@ -9,19 +9,15 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="floLeft">
-                <h4>Current Games:</h4>
+            <h4>Current Games:</h4>
+            <div class="floLeft">        
                 <select size="5" id="joinList" ng-model="selectedGame">
-                    <option value="{{game1}}">Option 1</option>
-                    <option value="{{game2}}">Option 2</option>
-                    <option value="{{game3}}">Option 3</option>
-                    <option value="{{game4}}">Option 4</option>
-                    <option value="{{game5}}">Option 5</option>
+                    <option  ng-repeat="game in gamesList">{{game.name}}</option>
                 </select>
             </div>
             <div class="floRight">
                 <h4>Game:</h4>
-                
+                <select>
                     <option value="all">All</option>
                     <option value="public">Public</option>
                     <option value="private">Private</option>

@@ -2,8 +2,23 @@ var wolfsta = angular.module("wolfsta");
 
 wolfsta.controller('joinCtrl', function($scope, $location){
     
-        $scope.game1 = "game1";
-        $scope.game2 = "garbage"
+        $scope.gamesList = [{
+            name: 'Game #374'
+        },
+        {
+            name: 'Game #256'
+        },
+        {
+            name: 'Game #145'
+        },
+        {
+            name: 'Game #182'
+        },
+        {
+            name: 'Game #263'
+        },
+        ];
+
     
         $scope.createGame = function(){
             $location.path('/createGame');
