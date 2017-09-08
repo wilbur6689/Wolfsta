@@ -1,40 +1,30 @@
 <!--Pulling Awesome Font -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-    <div>
-        <div>
-            <div>
-                <h4>This is the friends list</h4>
-                <h3>Your Friends</h3>
-                <p>nothing.... so sad!</p>
-                <div class="wrapper">
-                    <span class="group-btn">     
-                    <button type="submit" ng-click="mainMenu()">mainMenu</button> 
-                    </span>
-                </div>    
-            </div>
-            <div class="row">
-            <div class="col-md-12">
+    <div class="row">
+        <h2>This is the friends list</h2>
+        <div class="col-md-12">
             <div ng-app="wolfsta" ng-controller="friendListCtrl"> 
                 <table class="table table-striped table-hover">
-                <thead>
-                <tr>
-                    <th>Avatar</th>
-                    <th>Username</th>
-                    <th>Rank</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="friend in friend_list">
-                    <td>{{friend.avatar}}</td>
-                    <td>{{friend.username}}</td>
-                    <td>{{friend.rank}}</td>
-                </tr>
-                </tbody>
+                    <thead>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="friend in friend_list">
+                            <td>{{friend.avatar}}</td>
+                            <td>{{friend.username}}</td>
+                            <td>{{friend.rank}}</td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-            </div>
-            </div>
         </div>
+    </div>
+    <div class="col-md-12 hand" ng-click="joinGame()">
+            <h3>Return to Main Menu</h3>
     </div>
 </div>

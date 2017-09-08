@@ -1,24 +1,17 @@
 package com.teamwolf.canasta;
 
 import com.teamwolf.beans.Player;
-import com.teamwolf.enums.Card;
-
-import java.util.ArrayList;
 
 public abstract class CanastaPlayer extends Player{
-    ArrayList<Card> hand;
-    ArrayList<Card> meld;
-    ArrayList<Card> opponentMeld;
-    Card discard;
 
     public void makeMove(){
-        if(isStock()){
-            draw();
+        if( draw()){
             meld();
             discard();
         }
         else{
-            //TODO
+            Canasta ref = new Canasta();
+            ref.endRound(ref.getGame(this.getGame_id()));
         }
     }
 
@@ -33,8 +26,9 @@ public abstract class CanastaPlayer extends Player{
 
     /**
      * decide whether to draw from discard
+     * returns true if a draw occured
      */
-    protected abstract void draw();
+    protected abstract boolean draw();
 
     /**
      *decide whether or not to make melds

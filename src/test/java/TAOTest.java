@@ -6,7 +6,7 @@ import org.junit.*;
 public class TAOTest
 {
 
-    @Test
+    //@Test
     public void Users()
     {
         Gson geeson = new Gson();
@@ -41,7 +41,7 @@ public class TAOTest
 
 
     }
-    @Test
+    //@Test
     public void Teams()
     {
         Gson geeson = new Gson();
@@ -52,7 +52,7 @@ public class TAOTest
         System.out.println( geeson.toJson(Team1) );
 
     }
-    @Test
+    //@Test
     public void Rewards()
     {
         Gson geeson = new Gson();
@@ -63,7 +63,7 @@ public class TAOTest
         System.out.println( geeson.toJson(Reward1) );
 
     }
-    @Test
+    //@Test
     public void Players()
     {
         Gson geeson = new Gson();
@@ -74,7 +74,7 @@ public class TAOTest
         System.out.println( geeson.toJson(Player1) );
 
     }
-    @Test
+    //@Test
     public void Games()
     {
         Gson geeson = new Gson();
@@ -85,7 +85,7 @@ public class TAOTest
         System.out.println( geeson.toJson(Game1) );
 
     }
-    @Test
+    //@Test
     public void FriendLookUps()
     {
         Gson geeson = new Gson();

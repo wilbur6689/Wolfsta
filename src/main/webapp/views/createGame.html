@@ -7,29 +7,24 @@
             <hr>
             <fieldset class="fieldset_auto_width">
             <div>
-                <input ng-model="game.name" id="GameName" placeholder="Enter Game Name">
-                <input ng-model="game.password" id="GamePassword" placeholder="Enter Game Password">
+                <label>Enter a Game Name:</label>
+                <input ng-model="game.name" id="GameName" placeholder="Name...">
             </div>
-            <br/>
             <div>
-                <label>Privacy Setting:</label><br> 
-                <input type="radio" name="privSetting" value="public" checked>Public</input><br>
-                <input type="radio" name="privSetting" value="private">Private</input>  
-                
+                <label>Enter a Password For a Private Game:</label>
+                <input ng-model="game.password" id="GamePassword" placeholder="Private Game Password...">
             </div>
-            <br>
             <div>
                 <label>Number of Players:</label> 
-                <input type="number" value="playerNumber" placeholder="Number of Players...">
+                <input type="number" value="playerNumber" placeholder="8 Player Max...">
             </div>
-            <br>
             <div>
                 <label>Time limit: </label> 
                 <input type="number" value="timeLimit" placeholder="Number of Minutes...">
             </div>
             <br>
             <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>
-            <button type="submit" ng-click="mainMenu()" id="submit">Cancel</button>
+            <button type="submit" ng-click="joinGame()" id="submit">Cancel</button>
         </fieldset>
     </form>
 </div>
