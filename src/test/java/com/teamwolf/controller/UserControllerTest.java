@@ -1,6 +1,7 @@
 package com.teamwolf.controller;
 
 import com.teamwolf.beans.*;
+import com.teamwolf.data.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.*;
@@ -23,8 +24,8 @@ import static org.hamcrest.Matchers.is;
 
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
 @SpringBootTest
+@DataJpaTest
 public class UserControllerTest
 {
 
@@ -39,6 +40,9 @@ public class UserControllerTest
     private UserController userController;
 
     private MockMvc mockMvc;
+
+    @Autowired
+    private UserData userData;
 
 
     User user1 = new User();
@@ -61,7 +65,8 @@ public class UserControllerTest
 
         mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
 
-
+        entityManager.persist(user1);
+        entityManager.persist(user2);
 
         //when(bookService.getBook(17)).thenReturn(testBook);
     }
@@ -78,7 +83,6 @@ public class UserControllerTest
         ;
 
     }
-
 
 
     @Test

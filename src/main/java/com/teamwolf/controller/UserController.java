@@ -6,20 +6,22 @@ import com.teamwolf.controller.response.*;
 import com.teamwolf.logic.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
+import org.springframework.stereotype.*;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
+//@RestController("userController")
 @RequestMapping(path="/services/user")
 public class UserController extends BaseController
 {
     @Autowired
-    public void setUserLogic(UserLogic userLogic)
+    public void setUserLogic(@Qualifier("userImpl") UserLogic userLogic)
     {
         this.userLogic = userLogic;
     }
 
-    @Autowired
-    UserLogic userLogic;
+
+    private UserLogic userLogic;
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public void notFound()
     {
