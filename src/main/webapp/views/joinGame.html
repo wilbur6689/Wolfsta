@@ -1,19 +1,38 @@
 <!--Pulling Awesome Font -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
-<div class="container">
+<div class="container" ng-controller="joinCtrl">
     <div class="row"> 
         <div class="col-md-12">       
-            <h2>Current Games:</h2>
+            <h2>Welcome To Wolfsta</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12" ng-click="selectGame()">
-            <h3>Game #321</h3>
-            <p>this is a fun game</p>
-        </div>
-        <div class="col-md-12 hand" ng-click="mainMenu()">
-            <h3>Return to Main Menu</h3>
+        <div class="col-md-12">
+            <div class="floLeft">
+                <h4>Current Games:</h4>
+                <select size="5" id="joinList" ng-model="selectedGame">
+                    <option value="{{game1}}">Option 1</option>
+                    <option value="{{game2}}">Option 2</option>
+                    <option value="{{game3}}">Option 3</option>
+                    <option value="{{game4}}">Option 4</option>
+                    <option value="{{game5}}">Option 5</option>
+                </select>
+            </div>
+            <div class="floRight">
+                <h4>Game:</h4>
+                
+                    <option value="all">All</option>
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select><br>
+                <input type="text" value="{{selectedGame}}" class="textBox"><br>
+                <input type="text" placeholder="   Password..." class="textBox"><br>
+                <br>
+                <br>
+                <button type="button" ng-click="game(game)">Join Game</button>
+                <button type="button" ng-click="createGame()">Create Game</button>
+            </div>
         </div>
     </div>
 </div>

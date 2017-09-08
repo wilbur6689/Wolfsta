@@ -69,12 +69,32 @@
         },
         {
             "url":"/user/new",
-            "request":"a user object",
+            "json":"a user object",
             "response":
             {
                 
             }
         }
 
+    ],
+    "tour":
+    [
+
+    ],
+
+    "gamemgr":
+    [
+        {
+            "url":"/games/new"
+        },
+        {
+            "url":"/games"
+        }
+    ],
+    "gamelogic":
+    [
+        {
+            "url":"/game/{id}/"
+        }
     ]
 }

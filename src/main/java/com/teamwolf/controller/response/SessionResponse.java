@@ -3,7 +3,6 @@ package com.teamwolf.controller.response;
 public class SessionResponse extends Response
 {
     private String status;
-    private String success;
     private String token;
 
     private Integer id;
@@ -13,18 +12,13 @@ public class SessionResponse extends Response
     }
 
 
-    public SessionResponse(String status, String success, String token, Integer id, String message)
+    public SessionResponse(String status, String token, Integer id, String message, boolean success)
     {
-        super(message);
+        super(message,success);
         this.status = status;
-        this.success = success;
         this.token = token;
         this.id = id;
 
-    }
-    public SessionResponse(String message)
-    {
-        super(message);
     }
 
     public String getStatus()
@@ -35,16 +29,6 @@ public class SessionResponse extends Response
     public void setStatus(String status)
     {
         this.status = status;
-    }
-
-    public String getSuccess()
-    {
-        return success;
-    }
-
-    public void setSuccess(String success)
-    {
-        this.success = success;
     }
 
     public String getToken()
