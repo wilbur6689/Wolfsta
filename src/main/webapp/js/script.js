@@ -17,7 +17,7 @@ wolfsta.config(function($routeProvider) {
 
     .when('/gameCtrl',{
         templateUrl : 'views/game.html',
-        controller : 'gameCtrl.js'
+        controller : 'gameCtrl'
     })
 
     .when('/joinGame',{
