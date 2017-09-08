@@ -1,6 +1,7 @@
 package com.teamwolf.canasta;
 
 import com.teamwolf.beans.Player;
+import com.teamwolf.dataAccess.TAOClass;
 
 public abstract class CanastaPlayer extends Player{
 

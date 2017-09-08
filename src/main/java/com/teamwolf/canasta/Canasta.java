@@ -8,12 +8,17 @@ import com.teamwolf.dataAccess.TAO;
 import com.teamwolf.dataAccess.TAOClass;
 import com.teamwolf.enums.*;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 /**
  * CORE of CANASTA APP
  */
+@Component
+@Scope(value = "prototype")
 public class Canasta {
 
     private TAO<CardLookup> cDao;
@@ -22,33 +27,41 @@ public class Canasta {
     protected static Logger log = Logger.getRootLogger();
 
     /**
+     * old Constructor
+     */
+    public Canasta(){
+        try {
+            this.cDao = new TAOClass<>(CardLookup.class.newInstance());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            this.pDao = new TAOClass<>(Player.class.newInstance());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            this.gDao = new TAOClass<>(Game.class.newInstance());
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
      * constructor
      */
-    public Canasta() {
-
-        try {
-            this.cDao = new TAOClass<CardLookup>(CardLookup.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            this.pDao = new TAOClass<Player>(Player.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            this.gDao = new TAOClass<Game>(Game.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+    @Autowired
+    public Canasta(TAO<CardLookup> CardLookupTAO, TAO<Player> PlayerTAO, TAO<Game> GameTAO) {
+        this.cDao = CardLookupTAO;
+        this.pDao = PlayerTAO;
+        this.gDao = GameTAO;
     }
 
     /**
@@ -60,7 +73,6 @@ public class Canasta {
 
     /**
      * removes a player from the game
-     *
      * @param p player to be removed
      */
     public void removePlayer(Player p) {
@@ -87,43 +99,52 @@ public class Canasta {
 
         //create deck
         for (Card c : Card.values()) {
-            CardLookup card = new CardLookup();
-            card.setCardId(-1);//should be changed by trigger
-            card.setCard(c);
-            card.setGameId(g.getGameId());
-            card.setOwner(null); // no one owns it as it is in deck
-            card.setState(CardState.DECK);
-            card.setMeldId(-1);// not in a meld
-            cDao.add(card);
+        CardLookup card = new CardLookup();
+        card.setCardId(-1);//should be changed by trigger
+        card.setCard(c);
+        card.setGameId(g.getGameId());
+        card.setOwner(null); // no one owns it as it is in deck
+        card.setState(CardState.DECK);
+        card.setMeldId(-1);// not in a meld
+        cDao.add(card);
+    }
+
+    g.setGameState(2);
+    g = gDao.update(g);
+
+    //deal cards
+
+    for (int i = 1; i <= g.getPlayers(); i++) {
+        for (int j = 0; j < 11; j++) {
+            draw(g, getPlayer(g, i));
         }
+    }
 
-        g.setGameState(2);
-        g = gDao.update(g);
-
-        //deal cards
-        for (int i = 1; i <= g.getPlayers(); i++) {
-            for (int j = 0; j < 11; j++) {
-                draw(g, i);
-            }
-        }
-
-        //sets the initial discard pile
+    //sets the initial discard pile
         while (initialDiscard(g)) ;
     }
 
-    //public call to draw
-    public CardLookup draw(Game g) {
-        return draw(g, g.getTurn());
+    /**
+     * gets player from database
+     * @param g game
+     * @param i player number
+     * @return Player
+     */
+    private Player getPlayer(Game g, int i) {
+        Map<String, Object> constraints = new HashMap<>();
+        constraints.put("game_id", g.getGameId());
+        constraints.put("player_number", i);
+        Player p = pDao.getByCompositeKey(constraints);
+        return p;
     }
 
     /**
      * draws a card from the deck and puts it in the players hand
      * if red 3 places in meld and recalls draw
-     *
      * @param g            the game
-     * @param playerNumber the player that is drawing (== g.getTurn)
+     * @param p the player that is drawing (== g.getTurn)
      */
-    public CardLookup draw(Game g, int playerNumber) {
+    public CardLookup draw(Game g, Player p) {
         //Get cards in stack
         Map<String, Object> constraints = new HashMap<>();
         constraints.put("game_id", g.getGameId());
@@ -135,18 +156,13 @@ public class Canasta {
             int selectionIndex = (int) Math.floor(Math.random() * stack.size());
             CardLookup drew = (CardLookup) stack.toArray()[selectionIndex];
 
-            //get the Player
-            Map<String, Object> playerConstraints = new HashMap<>();
-            constraints.put("game_id", g.getGameId());
-            constraints.put("player_number", playerNumber);
-            Player p = pDao.getByCompositeKey(playerConstraints);
             drew.setOwner(p);
 
             //meld if 3 else put in hand
             if (drew.getCard().isRedThree()) {
                 drew.setState(CardState.Meld);
                 cDao.update(drew);
-                draw(g, playerNumber);
+                draw(g, p);
             } else {
                 drew.setState(CardState.HAND);
                 cDao.update(drew);
@@ -155,6 +171,10 @@ public class Canasta {
         } else {
             return null;
         }
+    }
+    //public call to draw with game only
+    public CardLookup draw(Game g) {
+        return draw(g, getPlayer(g, g.getTurn()));
     }
 
 
@@ -217,7 +237,7 @@ public class Canasta {
         MeldAttempt check = meldCriteriaCheck(required, g, p, cards, wildCards, fromDiscard);
 
         if (check.equals(MeldAttempt.Success)) {
-            makeMeld( g, p, cards, wildCards);
+            makeMeld( g, p, cards, wildCards, fromDiscard);
         }
         return check;
     }
@@ -230,9 +250,22 @@ public class Canasta {
      * @param cards       the cards to be melded
      * @param wildCards   the assignment of wild cards
      */
-    private void makeMeld(Game g, Player p, ArrayList<CardLookup> cards, int[] wildCards) {
+    private void makeMeld(Game g, Player p, ArrayList<CardLookup> cards, int[] wildCards, CardLookup fromDiscard) {
         //NOTE In order to ensure correct wild assignment wilds in cards must be in opposite order of rank they are to be assigned to
         //NOTE may want to be changed
+
+        //check if they will go out
+        int handSize = getHandSize(g, p);
+        if (fromDiscard != null) {
+            handSize--; //1 card came from the discard
+        }
+
+        //if will go out
+        if (!(handSize - 1 >= cards.size())) {
+            p.setScore(p.getScore() + 100);
+            Player partner = getPartner(g, p);
+            partner.setScore(p.getScore());
+        }
 
         // create a stack of wilds to pop off
         Stack<CardLookup> wilds = new Stack<>();
@@ -592,7 +625,6 @@ public class Canasta {
 
     /**
      * determines total score for the parnership
-     *
      * @param g the game
      * @param p one of the players in the partnership
      * @return the combined total score
@@ -605,7 +637,6 @@ public class Canasta {
 
     /**
      * Calculates the value of a team's meld
-     *
      * @param g the game
      * @param p the player
      * @return the value of the player's meld
@@ -692,15 +723,126 @@ public class Canasta {
      * @param g the game
      */
     public void endRound(Game g) {
-        g.setRound(g.getRound() + 1);
-        newRound(g);
+        if(updateScores(g)){
+            g.setGameState(3);//resolved
+            gDao.update(g);
+        }
+        else {
+            newRound(g);
+        }
     }
 
-    /**sets up a new round
-     *
-     * @param g
+    /**
+     * updates player scores in the game
+     * Also checks for win condition
+     * @param g the game
+     * @return true if there is a winner
+     */
+    private boolean updateScores(Game g) {
+        int[] teamScores = new int[g.getPlayers()/2];
+        //get team scores and update the players in database
+        for(int i = 1; i <= g.getPlayers()/2; i++){
+            Player player = getPlayer(g, i);
+            int score = getTotalScore(g, player);
+            Player partner = getPartner(g, player);
+
+            //subtract what they had in they're hand
+            Collection<CardLookup> hand1 = getHand(player);
+            Collection<CardLookup> hand2 = getHand(partner);
+            for (CardLookup c : hand1){
+                score -= c.getCard().getValue();
+            }
+            for (CardLookup c : hand2){
+                score -= c.getCard().getValue();
+            }
+
+            //update player scores in database
+            partner.setScore(score);
+            player.setScore(score);
+            pDao.update(player);
+            pDao.update(partner);
+
+            //put scores in array to check for winner
+            teamScores[i-1] = score;
+        }
+        boolean over5000 = false;
+        for(int i : teamScores){
+            if(i >= 5000){
+                over5000 = true;
+                break;
+            }
+        }
+        if(!over5000){
+            return false;
+        }
+        else{
+            int highest = 0; //highest
+            int teamWithHighest = 0;
+            for (int i = 0; i<teamScores.length; i++){
+                if (teamScores[i] > highest){
+                    highest = teamScores[i];
+                    teamWithHighest = i + 1;
+                }
+            }
+            //check for tie
+            for (int i = teamWithHighest; i<teamScores.length; i++){
+                if(teamScores[i] == highest){
+                    return false;
+                }
+            }
+
+            //update game
+            g.setGameWon(teamWithHighest);
+            if(g.getPlayers() == 4){
+                if (teamWithHighest == 1){
+                    g.setGameLost(2);
+                }
+                else {
+                    g.setGameLost(1);
+                }
+            }
+            gDao.update(g);
+
+            return true;
+        }
+    }
+
+    /**
+     * sets up a new round
+     * basically start() with updates instead
+     * @param g the game
      */
     private void newRound(Game g) {
+        //reset Stack
+        for (Card c : Card.values()) {
+            Map<String, Object> constraints = new HashMap<>();
+            constraints.put("game_id", g.getGameId());
+            constraints.put("card_number", c.getId());
+            CardLookup card = cDao.getByCompositeKey(constraints);
+            card.setState(CardState.DECK);//put it back in the deck
+            card.setOwner(null); // no one owns it as it is in deck
+            card.setMeldId(-1);// not in a meld
+            cDao.update(card);
+        }
+
+        //increment round
+        g.setRound(g.getRound() + 1);
+
+        //next player goes first this time
+        g.setTurn(g.getRound());
+
+        gDao.update(g);
+
+        //deal the cards
+        for (int i = 1; i <= g.getPlayers(); i++) {
+            for (int j = 0; j < 11; j++) {
+                draw(g, getPlayer(g, i));
+            }
+        }
+
+        //sets initial discard
+        while (initialDiscard(g)) ;
     }
 
 }
+//TODO 100 points for going out in makeMeld()
