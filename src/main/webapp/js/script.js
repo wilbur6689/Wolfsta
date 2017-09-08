@@ -2,26 +2,20 @@ var wolfsta = angular.module("wolfsta", ["ngRoute"]);
 
 wolfsta.config(function($routeProvider) {
     $routeProvider
-    .when("/", {
-        templateUrl : "views/login.html",
-        controller:'loginCtrl'
-    }) 
-    .when('/mainMenu',{
-        templateUrl : "views/mainMenu.html",
-        controller : 'mainMenuCtrl'
-    })
+
     .when('/createGame',{
         templateUrl : "views/createGame.html",
         controller : 'createGameCtrl'
     })
+
     .when('/friendList',{
         templateUrl : "views/friendList.html",
         controller : 'friendListCtrl'
     })
 
-    .when('/tour',{
-        templateUrl : "views/tour.html",
-        controller : 'tourCtrl'
+    .when('/gameCtrl',{
+        templateUrl : 'views/game.html',
+        controller : 'gameCtrl.js'
     })
 
     .when('/joinGame',{
@@ -29,38 +23,23 @@ wolfsta.config(function($routeProvider) {
         controller : 'joinCtrl'
     })
 
+    .when("/", {
+        templateUrl : "views/login.html",
+        controller:'loginCtrl'
+    }) 
+
     .when('/rules',{
         templateUrl : "views/rules.html",
         controller : 'rulesCtrl'
     })
 
+    .when('/tour',{
+        templateUrl : "views/tour.html",
+        controller : 'tourCtrl'
+    })
+
 });
 
-
-wolfsta.controller('mainMenuCtrl', function($scope, $location){
-
-    $scope.joinGame = function(){
-        $location.path('/joinGame');
-        //makes a call to DB to get current games and loads them
-    }
-
-    $scope.createGame = function(){
-        $location.path('/createGame');
-    }
-
-    $scope.friendList = function(){
-        $location.path('/friendList');
-    }
-
-    $scope.tour = function(){
-        $location.path('/tour');
-    }
-
-    $scope.rules = function(){
-        $location.path('/rules');
-    }
-
- });
 
  
 
