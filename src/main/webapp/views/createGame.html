@@ -1,6 +1,6 @@
 <title> Create Game </title>
 
-<div class="container">
+<div class="container" ng-controller="createGameCtrl">
     
     <form>
             <h2>Create Game</h2>
@@ -16,11 +16,11 @@
             </div>
             <div>
                 <label>Number of Players:</label> 
-                <input type="number" value="playerNumber" placeholder="8 Player Max...">
+                <input type="number" placeholder="8 Player Max...">
             </div>
             <div>
                 <label>Time limit: </label> 
-                <input type="number" value="timeLimit" placeholder="Number of Minutes...">
+                <input type="number" placeholder="Number of Minutes...">
             </div>
             <br>
             <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>
