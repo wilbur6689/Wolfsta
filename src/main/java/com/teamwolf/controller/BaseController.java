@@ -23,6 +23,7 @@ public class BaseController
     @ExceptionHandler(Throwable.class)
     public String error(Exception ex)
     {
+        ex.printStackTrace();
         return geeson.toJson(new Response(ex));
     }
 

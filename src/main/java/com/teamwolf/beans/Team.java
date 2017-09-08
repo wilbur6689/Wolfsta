@@ -1,14 +1,13 @@
 package com.teamwolf.beans;
 
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
 
 @Entity
 @Table(name="TEAM")
-public class Team implements DataObject
+public class Team
 {
     private int teamId = 0;
     private int teamGamesWon = 0;
@@ -76,10 +75,5 @@ public class Team implements DataObject
         this.playerTwo = playerTwo;
     }// public void setPlayerTwo(Player playerTwo)
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getTeamId();
-    }
+
 }// public class Team

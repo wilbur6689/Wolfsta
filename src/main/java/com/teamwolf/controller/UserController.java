@@ -9,11 +9,17 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="/user")
+@RequestMapping(path="/services/user")
 public class UserController extends BaseController
 {
     @Autowired
-    UserLogic logic;
+    public void setUserLogic(UserLogic userLogic)
+    {
+        this.userLogic = userLogic;
+    }
+
+    @Autowired
+    UserLogic userLogic;
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
     public void notFound()
     {
@@ -28,7 +34,7 @@ public class UserController extends BaseController
     public String get(@PathVariable Integer uid)
     {
         UserResponse resp = new UserResponse();
-        resp.setUser(logic.getUser(uid));
+        resp.setUser(userLogic.getUser(uid));
         resp.setSuccess(true);
         return this.getGeeson().toJson(resp);
     }
@@ -39,7 +45,7 @@ public class UserController extends BaseController
     public String getFriends(@PathVariable Integer uid)
     {
         UserResponse resp = new UserResponse();
-        resp.setFriends(logic.getFirends(uid));
+        resp.setFriends(userLogic.getFirends(uid));
         resp.setSuccess(true);
         return this.getGeeson().toJson(resp);
     }
@@ -50,7 +56,7 @@ public class UserController extends BaseController
     public String newUser(@RequestBody User u)
     {
         UserResponse resp = new UserResponse();
-        resp.setSuccess(logic.addUser(u));
+        resp.setSuccess(userLogic.addUser(u));
         return this.getGeeson().toJson(resp);
     }
 }

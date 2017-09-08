@@ -1,7 +1,6 @@
 package com.teamwolf.beans;
 
 
-import com.teamwolf.dataAccess.*;
 import com.teamwolf.enums.*;
 
 import javax.persistence.*;
@@ -9,7 +8,7 @@ import java.io.*;
 
 @Entity
 @Table(name="CARD_LOOKUP")
-public class CardLookup implements DataObject
+public class CardLookup
 {
     private Integer cardId;
     private Card    card;
@@ -49,6 +48,8 @@ public class CardLookup implements DataObject
         this.gameId = gameId;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLAYER_ID", referencedColumnName = "PLAYER_ID")
     public Player getOwner()
     {
         return owner;
@@ -77,10 +78,4 @@ public class CardLookup implements DataObject
         this.meldId = meldId;
     }
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getCardId();
-    }
 }

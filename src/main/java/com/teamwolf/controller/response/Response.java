@@ -23,7 +23,10 @@ public class Response
     }
     public Response(Exception ex)
     {
-        this.message = ex.getMessage();
+        if(ex.getMessage() != null)
+            this.message = ex.getMessage();
+        else
+            this.message = "Exception: "+ ex.getClass().toString();
         this.stackTrace = Arrays.asList(ex.getStackTrace());
         this.success = false;
     }

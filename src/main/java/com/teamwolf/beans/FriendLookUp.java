@@ -1,13 +1,12 @@
 package com.teamwolf.beans;
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
 
 @Entity
 @Table(name = "FRIEND_LOOKUP")
-public class FriendLookUp implements DataObject
+public class FriendLookUp
 {
 
     private int friendshipId = 0;
@@ -60,10 +59,4 @@ public class FriendLookUp implements DataObject
         this.status = status;
     }
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getFriendshipId();
-    }
 }// public class FriendLookUp

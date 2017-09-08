@@ -2,14 +2,13 @@ package com.teamwolf.beans;
 
 // import org.apache.log4j.Logger;
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
 
 @Entity
 @Table(name="PLAYER")
-public class Player implements DataObject{
+public class Player{
 
     private int playerId = 0;
     private int playerNumber = 0;
@@ -103,10 +102,5 @@ public class Player implements DataObject{
         this.team_number = team_number;
     }// public void setTeam_number(int team_number)
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getPlayerId();
-    }
+
 }// public class Player

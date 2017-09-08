@@ -1,14 +1,17 @@
 package com.teamwolf.beans;
 
 
-import com.teamwolf.dataAccess.*;
+import org.springframework.context.annotation.*;
+import org.springframework.stereotype.*;
 
 import javax.persistence.*;
 import java.io.*;
 
+@Component
+@Scope(value = "prototype")
 @Entity
 @Table(name="USER_TABLE")
-public class User implements DataObject{
+public class User {
     private Integer userid;
     private String username;
     private String password;
@@ -100,11 +103,6 @@ public class User implements DataObject{
         }
 
     }
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getUserid();
-    }
+
 
 }

@@ -1,6 +1,5 @@
 package com.teamwolf.beans;
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
@@ -8,7 +7,8 @@ import java.sql.*;
 
 @Entity
 @Table(name="GAME")
-public class Game implements DataObject{
+public class Game
+{
     private int gameId = 0;
     private String gameName = "";
     private String gamePassword;
@@ -123,10 +123,4 @@ public class Game implements DataObject{
         this.gameResolved = gameResolved;
     }
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return null;
-    }
 }// public class Game

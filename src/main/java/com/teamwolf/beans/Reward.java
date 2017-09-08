@@ -1,13 +1,12 @@
 package com.teamwolf.beans;
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
 
 @Entity
 @Table(name = "REWARD")
-public class Reward implements DataObject{
+public class Reward {
     private int rewardId = 0;
     private int userId = 0;
     private int reward_rule = 0;
@@ -45,10 +44,5 @@ public class Reward implements DataObject{
         this.reward_rule = reward_rule;
     }
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getRewardId();
-    }
+
 }// public class Reward

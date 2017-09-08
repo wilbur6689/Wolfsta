@@ -1,6 +1,5 @@
 package com.teamwolf.beans;
 
-import com.teamwolf.dataAccess.*;
 
 import javax.persistence.*;
 import java.io.*;
@@ -8,7 +7,7 @@ import java.sql.*;
 
 @Entity
 @Table(name="USER_SESSION")
-public class UserSession implements DataObject
+public class UserSession
 {
     private String token;
     private int userId = 0;
@@ -48,10 +47,5 @@ public class UserSession implements DataObject
         this.startTime = startTime;
     }// public void setStartTime(Date startTime)
 
-    @Transient
-    @Override
-    public Serializable getID()
-    {
-        return this.getToken();
-    }
+
 }// public class UserSession
