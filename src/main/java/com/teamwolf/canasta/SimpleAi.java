@@ -15,7 +15,7 @@ public class SimpleAi extends CanastaPlayer{
         ArrayList<CardLookup> hand = new ArrayList<>();
         Canasta ref = new Canasta();
         hand.addAll(ref.getHand(this));
-        //ref.g
+        //TODO
         return true;
     }
 

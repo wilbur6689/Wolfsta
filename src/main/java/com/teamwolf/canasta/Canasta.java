@@ -32,27 +32,12 @@ public class Canasta {
     public Canasta(){
         try {
             this.cDao = new TAOClass<>(CardLookup.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-        try {
             this.pDao = new TAOClass<>(Player.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+            this.gDao = new TAOClass<>(Game.class.newInstance());
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
 
-        try {
-            this.gDao = new TAOClass<>(Game.class.newInstance());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
     }
     /**
      * constructor
@@ -121,7 +106,9 @@ public class Canasta {
     }
 
     //sets the initial discard pile
-        while (initialDiscard(g)) ;
+        while (true) {
+            if (initialDiscard(g)) break;
+        }
     }
 
     /**
@@ -176,8 +163,6 @@ public class Canasta {
     public CardLookup draw(Game g) {
         return draw(g, getPlayer(g, g.getTurn()));
     }
-
-
     /**
      * draws until initial discard pile is valid
      *
@@ -264,7 +249,7 @@ public class Canasta {
         if (!(handSize - 1 >= cards.size())) {
             p.setScore(p.getScore() + 100);
             Player partner = getPartner(g, p);
-            partner.setScore(p.getScore());
+            partner.setScore(p.getScore());//should be same as partner.getScore + 100 but i want to make sure they're the same
         }
 
         // create a stack of wilds to pop off
@@ -313,8 +298,7 @@ public class Canasta {
                 }
             }
 
-            for (int k = 0; k < meld.size(); k++) {
-                CardLookup card = meld.get(k);
+            for (CardLookup card : meld) {
                 card.setMeldId(meldID);
                 card.setOwner(p);
                 card.setState(CardState.Meld);
@@ -554,7 +538,7 @@ public class Canasta {
         }
         for (CardLookup w : wilds) {
             for (CardLookup c : teamMeld) {
-                if (c.getCard().getRank() == rank && c.getMeldId() == w.getMeldId()) {//found a wild pertaining to rank
+                if (c.getCard().getRank() == rank && c.getMeldId().intValue() == w.getMeldId().intValue()) {//found a wild pertaining to rank
                     diff--;
                 }
             }
@@ -619,8 +603,7 @@ public class Canasta {
         Map<String, Object> constraint = new HashMap<>();
         constraint.put("game_id", g.getGameId());
         constraint.put("player_number", partnerNumber);
-        Player partner = pDao.getByCompositeKey(constraint);
-        return partner;
+        return pDao.getByCompositeKey(constraint);
     }
 
     /**
@@ -670,29 +653,20 @@ public class Canasta {
                 red3Count++;
             }
         }
-        if (red3Count == 4) {
-            return true;
-        } else {
-            return false;
-        }
+        return red3Count == 4;
     }
 
     /**
      * determines if the discard pile is frozen
-     *
-     * @param g
-     * @return
+     * @param g game
+     * @return true if discard is frozen
      */
     public boolean isDiscardFrozen(Game g) {
         Map<String, Object> constraint = new HashMap<>();
         constraint.put("game_id", g.getGameId());
         constraint.put("state", CardState.TOP);
         CardLookup c = cDao.getByCompositeKey(constraint);
-        if (c.isWild() || c.getCard().getRank() == 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return (c.isWild() || c.getCard().getRank() == 3);
     }
 
     /**
@@ -841,8 +815,9 @@ public class Canasta {
         }
 
         //sets initial discard
-        while (initialDiscard(g)) ;
+        while (true) {
+            if (initialDiscard(g)) break;
+        }
     }
 
 }
-//TODO 100 points for going out in makeMeld()
