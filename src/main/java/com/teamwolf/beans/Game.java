@@ -14,7 +14,7 @@ public class Game implements DataObject{
     private String gamePassword;
     private int players = 0;
     private int turn = 0;
-    private int round; //round number (used for determining who dealer is
+    private int round; //round number (used for determining who dealer is)
   private int timeLimit = 0;
     private Timestamp gameStartDate;
     private Timestamp gameResolved;

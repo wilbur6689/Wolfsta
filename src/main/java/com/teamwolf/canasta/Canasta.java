@@ -21,29 +21,24 @@ import java.util.*;
 @Scope(value = "prototype")
 public class Canasta {
 
-    private TAO<CardLookup> cDao;
-    private TAO<Player> pDao;
-    private TAO<Game> gDao;
+    private TAOClass<CardLookup> cDao;
+    private TAOClass<Player> pDao;
+    private TAOClass<Game> gDao;
     protected static Logger log = Logger.getRootLogger();
 
     /**
      * old Constructor
      */
     public Canasta(){
-        try {
-            this.cDao = new TAOClass<>(CardLookup.class.newInstance());
-            this.pDao = new TAOClass<>(Player.class.newInstance());
-            this.gDao = new TAOClass<>(Game.class.newInstance());
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
+            this.cDao = new TAOClass<>(new CardLookup());
+            this.pDao = new TAOClass<>(new Player());
+            this.gDao = new TAOClass<>(new Game());
     }
     /**
      * constructor
      */
     @Autowired
-    public Canasta(TAO<CardLookup> CardLookupTAO, TAO<Player> PlayerTAO, TAO<Game> GameTAO) {
+    public Canasta(TAOClass<CardLookup> CardLookupTAO, TAOClass<Player> PlayerTAO, TAOClass<Game> GameTAO) {
         this.cDao = CardLookupTAO;
         this.pDao = PlayerTAO;
         this.gDao = GameTAO;
@@ -85,7 +80,7 @@ public class Canasta {
         //create deck
         for (Card c : Card.values()) {
         CardLookup card = new CardLookup();
-        card.setCardId(-1);//should be changed by trigger
+        card.setCardId(null);//should be changed by trigger
         card.setCard(c);
         card.setGameId(g.getGameId());
         card.setOwner(null); // no one owns it as it is in deck
@@ -121,14 +116,29 @@ public class Canasta {
         Map<String, Object> constraints = new HashMap<>();
         constraints.put("game_id", g.getGameId());
         constraints.put("player_number", i);
-        Player p = pDao.getByCompositeKey(constraints);
-        return p;
+        return pDao.getByCompositeKey(constraints);
+    }
+    public Player getPlayer(Game g){
+        return getPlayer(g, g.getTurn());
+    }
+
+    /**
+     * gets the size of the stack
+     * @param g the game
+     * @return stack count
+     */
+    public int getStackSize(Game g){
+        Map<String, Object> constraints = new HashMap<>();
+        constraints.put("game_id", g.getGameId());
+        constraints.put("state", CardState.DECK);
+        Collection<CardLookup> stack = cDao.getByCompositeMap(constraints);
+        return stack.size();
     }
 
     /**
      * draws a card from the deck and puts it in the players hand
      * if red 3 places in meld and recalls draw
-     * @param g            the game
+     * @param g the game
      * @param p the player that is drawing (== g.getTurn)
      */
     public CardLookup draw(Game g, Player p) {
@@ -803,7 +813,10 @@ public class Canasta {
         g.setRound(g.getRound() + 1);
 
         //next player goes first this time
-        g.setTurn(g.getRound());
+        g.setTurn(g.getRound() % g.getPlayers());
+        if(g.getTurn() == 0){
+            g.setTurn(1);
+        }
 
         gDao.update(g);
 
@@ -820,4 +833,32 @@ public class Canasta {
         }
     }
 
+    /**
+     * discards a card
+     * @param g the game
+     * @param p the player discarding
+     * @param c the card they are discarding
+     */
+    public void discard(Game g, Player p, CardLookup c){
+
+        //fetch card that is currently the top of the discard pile
+        Map<String, Object> topConstraints = new HashMap<>();
+        topConstraints.put("game_id", g.getGameId());
+        topConstraints.put("state", CardState.TOP);
+        CardLookup top = cDao.getByCompositeKey(topConstraints);
+
+        //update them
+        c.setState(CardState.TOP);
+        c.setOwner(p);
+        cDao.update(c);
+        top.setState(CardState.DISCARD);
+        cDao.update(top);
+
+        //next person's turn
+        g.setTurn(g.getTurn() + 1);
+        if(g.getTurn() == 0){
+            g.setTurn(1);
+        }
+        gDao.update(g);
+    }
 }
