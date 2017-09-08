@@ -16,11 +16,11 @@
             </div>
             <div>
                 <label>Number of Players:</label> 
-                <input type="number" placeholder="8 Player Max...">
+                <input ng-model="game.playerNumber" value="playerNumber" placeholder="8 Player Max...">
             </div>
             <div>
                 <label>Time limit: </label> 
-                <input type="number" placeholder="Number of Minutes...">
+                <input ng-model="game.timer" value="timeLimit" placeholder="Number of Minutes...">
             </div>
             <br>
             <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>

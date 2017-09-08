@@ -1,5 +1,11 @@
 var wolfsta = angular.module("wolfsta");
 
+/**
+ * friendListCtrl is connected to friendList.html.
+ * The function joinGame changes the view to joinGame.html.
+ * The $http to ./user/{id}/friends is used to access the database and get the list
+ * of friends for the user.
+*/
 wolfsta.controller('friendListCtrl', function($scope, $location){
     $scope.joinGame = function(){
         $location.path('/joinGame');

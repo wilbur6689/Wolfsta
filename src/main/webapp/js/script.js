@@ -1,5 +1,7 @@
 var wolfsta = angular.module("wolfsta", ["ngRoute"]);
-
+/**
+ * The config file for all of the controllers.
+ */
 wolfsta.config(function($routeProvider) {
     $routeProvider
 
