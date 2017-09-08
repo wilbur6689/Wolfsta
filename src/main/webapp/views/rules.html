@@ -1,87 +1,92 @@
 <!--Pulling Awesome Font -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+	<div id="rules" class="col-md-12" style="text-align: left">
+		<h1 id="title"> Canasta Rules </h1>
+			<h2>Overview</h2>
+				<p>Canasta is a type of rummy played with 4, 6, or 8 players in teams of two. Each team is trying to reach a total score of 5,000 before the opposing team(s).</p>
+			<br>
+			
+			<h2>Card Types</h2>
+				<ul>
+					<li>Wilds(2s and Jokers)<p>		Can be assigned any desired rank by the player and when discarded, prevent the next player from drawing from the discard pile like Black 3s</p></li>
+					<li>Black 3s<p>		When discarded, prevent the next player from drawing from the discard pile</p></li>
+					<li>Red 3s<p>		Yield an immediate 100 bonus points to whoever draws them</p></li>
+					<li>Naturals<p>		4s - Kings</p></li>
+				</ul>
+			<br>
+			
+			<h2>Card Values</h2>
+				<ul>
+					<li>2s         : 20 points</li>
+					<li>Black 3s   : 5 points</li>
+					<li>Red 3s     : 100 points</li>
+					<li>4s - 7s    : 5 points</li>
+					<li>8s - Kings : 10 points</li>
+					<li>Aces       : 20 points</li>
+					<li>Jokers     : 50 points</li>
+				</ul>
+			<br>
+			
+			<h2>The Deal</h2>
+				<p>11 cards are dealt to each players starting with the player to the left of the dealer clockwise. The 
+				remaining cards are placed in the middle to seve as the stock. The top card of the stock is flipped over and 
+				placed by its side to start a discard pile. If this card is a 3, 2, or Joker another card is flipped until a 
+				valid card is reached.</p>
+			
+				<h4>Red 3s</h4>
+					<p>Whenever a red 3 is dealt or drawn it is immediately played face up in front of the player and a replacement
+					is drawn. Each red 3 earns a team 100 points. If all 4 are aquired in a single round an additional 400 points are
+					rewarded for a total of 800 points.</p>
+			<br>
+			
+			<h2>The Play</h2>
+				<p>The player to the left of the dealer begins. Play consists of drawing, melding, and then discarding.</p>
+				
+				<h4>Drawing</h4>
+					<p>Players must draw from either the stock or if possible the discard pile.
+					Only the top card of the discard is immediately accessible. If the top card is a Black 3 or Wild then
+					the discard is frozen for that turn and can not be drawn from. Otherwise if the player wishes to draw from 
+					the discard they must use it in a valid meld. At that point the entirety of the discard pile is put into the players hand</p>
+					
+				<h4>Melding</h4>
+					<p>The melding phase of the turn is optional. If a team has not melded yet in that round they must meet an initial meld point criteria depending on their total score. 
+					A valid meld consists of at least 3 cards of the same rank. Wild cards can assume any rank the player desires; however, They can 
+					not be reassigned after being used in a meld. Melds must have more natural cards than wild cards A player can add to existing
+					melds of theirs or their partner's. A meld of 7 or more cards forms a Canasta. Canastas are considered natural if they 
+					contain no wild cards and unnatural otherwise. Natural Canastas and Unnatural Canastas are worth 500 points and 300 points respectively.</p>
+					
+					<h5>Initial Meld Point Criteria:</h5>
+						<ul>
+							<li>less than 0     : 0 points</li>
+							<li>less than 1,500 : 50 points</li>
+							<li>less than 3,000 : 90 points</li>
+							<li>3,000 or more   : 120 points</li>
+						</ul>
+					
+				<h4>Discard</h4>
+					<p>At the end of the turn a player must choose one card from their hand to discard. Black 3s and Wilds freeze the discard pile for the next player.</p>
+					
+			<h2>Going Out</h2>
+				<p>The round ends when one player gets rid of all the cards in their hand. A player is not allowed to go out until their team 
+				has made at least one Canasta. A player receives a bonus of 100 points for going out and the round ends.</p>
+			
+			<h2>Scoring</h2>
+				<ul>
+					<li>Going Out          : 100 points</li>
+					<li>Natural Canasta    : 500 points</li>
+					<li>Unnatural Canasta  : 300 points</li>
+					<li>Red 3s             : 100 points</li>
+					<li>All 4 Red 3s Bonus : 400 points</li>
+					<li>Card Values of Each Card in a Meld</li>
+				</ul>
+				
+			<h2>Winning The Game</h2>
+				<p>First team to have accumalated 5,000 or more total points at the end of a round wins. If two or more teams both surpass this score than the higher score wins.</p>
+			
+	</div>
 
-<div id="rules">
-	<h1 id="title"> Canasta Rules </h1>
-		<h2>Overview</h2>
-			<p>Canasta is a type of rummy played with 4, 6, or 8 players in teams of two. Each team is trying to reach a total score of 5,000 before the opposing team(s).</p>
-		<br>
-		
-		<h2>Card Types</h2>
-			<ul>
-				<li>Wilds(2s and Jokers)<p>		Can be assigned any desired rank by the player and when discarded, prevent the next player from drawing from the discard pile like Black 3s</p></li>
-				<li>Black 3s<p>		When discarded, prevent the next player from drawing from the discard pile</p></li>
-				<li>Red 3s<p>		Yield an immediate 100 bonus points to whoever draws them</p></li>
-				<li>Naturals<p>		4s - Kings</p></li>
-			</ul>
-		<br>
-		
-		<h2>Card Values</h2>
-			<ul>
-				<li>2s         : 20 points</li>
-				<li>Black 3s   : 5 points</li>
-				<li>Red 3s     : 100 points</li>
-				<li>4s - 7s    : 5 points</li>
-				<li>8s - Kings : 10 points</li>
-				<li>Aces       : 20 points</li>
-				<li>Jokers     : 50 points</li>
-			</ul>
-		<br>
-		
-		<h2>The Deal</h2>
-			<p>11 cards are dealt to each players starting with the player to the left of the dealer clockwise. The 
-			remaining cards are placed in the middle to seve as the stock. The top card of the stock is flipped over and 
-			placed by its side to start a discard pile. If this card is a 3, 2, or Joker another card is flipped until a 
-			valid card is reached.</p>
-		
-			<h4>Red 3s</h4>
-				<p>Whenever a red 3 is dealt or drawn it is immediately played face up in front of the player and a replacement
-				is drawn. Each red 3 earns a team 100 points. If all 4 are aquired in a single round an additional 400 points are
-				rewarded for a total of 800 points.</p>
-		<br>
-		
-		<h2>The Play</h2>
-			<p>The player to the left of the dealer begins. Play consists of drawing, melding, and then discarding.</p>
-			
-			<h4>Drawing</h4>
-				<p>Players must draw from either the stock or if possible the discard pile.
-				Only the top card of the discard is immediately accessible. If the top card is a Black 3 or Wild then
-				the discard is frozen for that turn and can not be drawn from. Otherwise if the player wishes to draw from 
-				the discard they must use it in a valid meld. At that point the entirety of the discard pile is put into the players hand</p>
-				
-			<h4>Melding</h4>
-				<p>The melding phase of the turn is optional. If a team has not melded yet in that round they must meet an initial meld point criteria depending on their total score. 
-				A valid meld consists of at least 3 cards of the same rank. Wild cards can assume any rank the player desires; however, They can 
-				not be reassigned after being used in a meld. Melds must have more natural cards than wild cards A player can add to existing
-				melds of theirs or their partner's. A meld of 7 or more cards forms a Canasta. Canastas are considered natural if they 
-				contain no wild cards and unnatural otherwise. Natural Canastas and Unnatural Canastas are worth 500 points and 300 points respectively.</p>
-				
-				<h5>Initial Meld Point Criteria:</h5>
-					<ul>
-						<li>less than 0     : 0 points</li>
-						<li>less than 1,500 : 50 points</li>
-						<li>less than 3,000 : 90 points</li>
-						<li>3,000 or more   : 120 points</li>
-					</ul>
-				
-			<h4>Discard</h4>
-				<p>At the end of the turn a player must choose one card from their hand to discard. Black 3s and Wilds freeze the discard pile for the next player.</p>
-				
-		<h2>Going Out</h2>
-			<p>The round ends when one player gets rid of all the cards in their hand. A player is not allowed to go out until their team 
-			has made at least one Canasta. A player receives a bonus of 100 points for going out and the round ends.</p>
-		
-		<h2>Scoring</h2>
-			<ul>
-				<li>Going Out          : 100 points</li>
-				<li>Natural Canasta    : 500 points</li>
-				<li>Unnatural Canasta  : 300 points</li>
-				<li>Red 3s             : 100 points</li>
-				<li>All 4 Red 3s Bonus : 400 points</li>
-				<li>Card Values of Each Card in a Meld</li>
-			</ul>
-			
-		<h2>Winning The Game</h2>
-			<p>First team to have accumalated 5,000 or more total points at the end of a round wins. If two or more teams both surpass this score than the higher score wins.</p>
-		
+	<div class="col-md-12 hand" ng-click="joinGame()">
+		<h3>Return to Main Menu</h3>
+	</div>
 </div>

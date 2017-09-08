@@ -1,8 +1,8 @@
 
 
-var bankApp = angular.module("wolfsta", ["ngRoute"]);
+var wolfsta = angular.module("wolfsta", ["ngRoute"]);
 
-bankApp.config(function($routeProvider) {
+wolfsta.config(function($routeProvider) {
     $routeProvider
     .when("/", {
         templateUrl : "views/login.html",
@@ -31,14 +31,40 @@ bankApp.config(function($routeProvider) {
         controller : 'joinCtrl'
     })
 
+        .when('/rules',{
+            templateUrl : "views/rules.html",
+            controller : 'rulesCtrl'
+        })
+
 });
 
+wolfsta.service('logoutService', function($scope, $http, $location){
 
-bankApp.controller('loginCtrl', function($scope, $http, $location){
+}
+                
+wolfsta.controller('loginCtrl', function($scope, $http, $location){
+
+    $scope.logout = function(){
+        $http({method : 'POST', url : './services/session/logout', data : { token : logoutTokenVar}})
+        .then(function(response){
+            if(response.data.success == true){
+                $location.path('/');
+            }
+            else{
+                alert(response.data.message);
+            }
+        })
+    }
+});
+
+wolfsta.controller('loginCtrl', function($scope, $rootScope, $http, $location){
+
    
     $scope.login = function(player){
-        $http({method : 'POST', url : '/ers_app/signIn/json', data : JSON.stringify(player)}).then(function (response){
-            if(response.data != null){
+        $http({method : 'POST', url : './services/session/login', data : JSON.stringify(player)})
+        .then(function (response){
+            if(response.data == true){
+                $rootScope.logoutTokenVar = response.data.token;
                 $location.path('/mainMenu');
             }
             else {
@@ -48,7 +74,8 @@ bankApp.controller('loginCtrl', function($scope, $http, $location){
     }
 });
 
-bankApp.controller('mainMenuCtrl', function($scope, $location){
+wolfsta.controller('mainMenuCtrl', function($scope, $location, logout){
+
 
     $scope.joinGame = function(){
         $location.path('/joinGame');
@@ -67,19 +94,29 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
         $location.path('/tour');
     }
 
+    $scope.rules = function(){
+        $location.path('/rules');
+    }
+
  });
 
- bankApp.controller('createGameCtrl', function($scope, $location){
+ wolfsta.controller('createGameCtrl', function($scope, $location, logout){
 
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
     }
  });
 
- bankApp.controller('friendListCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+
+ wolfsta.controller('friendListCtrl', function($scope, $location){
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
+
     }
+
     $scope.friend_list = [
         {avatar : '1', username : 'person_one', rank : '3'},
         {avatar : '1', username : 'person_two', rank : '2' }
@@ -88,26 +125,49 @@ bankApp.controller('mainMenuCtrl', function($scope, $location){
 
  });
 
- bankApp.controller('tourCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+
+ wolfsta.controller('tourCtrl', function($scope, $location){
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
+
     }
 
  });
 
- bankApp.controller('gameCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+
+ wolfsta.controller('gameCtrl', function($scope, $location){
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
+
     }
 
  });
 
- bankApp.controller('joinCtrl', function($scope, $location){
-    $scope.mainMenu = function(){
-        $location.path('/mainMenu');
+ wolfsta.controller('joinCtrl', function($scope, $location){
+
+    $scope.game1 = "game1";
+    $scope.game2 = "garbage"
+
+    $scope.createGame = function(){
+        $location.path('/createGame');
+
     }
 
+    
+
  });
+
+ wolfsta.controller('rulesCtrl', function($scope, $location){
+    $scope.joinGame = function(){
+        $location.path('/joinGame');
+        //makes a call to DB to get current games and loads them
+    }
+
+  });
+
+
 
 
 
