@@ -1,0 +1,191 @@
+body {
+    background-color: #62BFBF;
+}
+
+.navbar{
+    min-height: 100px;
+}
+.nav-brand{
+    padding: 10px;
+}
+.navbar-inverse{
+    background-color: #293333;
+}
+
+.navbar-nav {
+    float: right;
+    padding: auto;
+}
+
+.login {
+    margin-top: 25px !important;
+    padding: 5px;
+    width: auto;
+    min-width: 320px;
+    max-width: 1000px;
+    height: 400px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    border: 1px solid #293333;
+    text-align: center;
+}
+
+h1 h4 {
+    text-align: center;
+}
+
+.container {
+    padding-left: auto;
+    padding-right: auto;
+    margin: auto;
+    width: 80%;
+}
+
+canvas, img { 
+    display:block; 
+    margin:1em auto; 
+    border:#293333 solid 1px;
+    border-radius: 5px; }
+
+canvas {
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/playSurface.jpg");
+    background-size: 100%;
+}
+
+input {
+    margin-top: 15px;
+}
+.loginSubmit {
+    margin-top: 15px;
+}
+
+#joinList {
+    min-width: 200px;
+    min-height: 200px;
+}
+
+.floLeft{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.floRight {
+    float: right;
+    width: 50%;
+    align-content: center;
+}
+.row {
+    margin: 0 auto;
+    width: 80%;
+    height: 30%;
+    text-align: center;
+}
+
+.textBox {
+    border:#293333 solid 1px;
+    border-radius: 5px;
+    background-color: C6F4F4;
+}
+
+.col-md-4{
+    background-color: #C6F4F4;
+    border: solid #293333 3px;
+    border-radius: 10px;
+    margin: 10px;
+    width: auto;
+    min-width: 200px;
+    height: auto;
+    min-height: 100px; 
+    overflow: wrap;
+    text-align: center;
+}
+
+.col-md-6{
+    background-color: #C6F4F4;
+    border: solid #293333 3px;
+    border-radius: 10px;
+    margin: 10px;
+    width: auto;
+    min-width: 200px;
+    height: auto;
+    min-height: 100px; 
+    overflow: wrap;
+    text-align: center;
+}
+.col-md-12{
+    background-color: #C6F4F4;
+    border: solid #293333 1px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 25px;
+}
+.hand{
+    cursor: pointer;
+}
+
+form {
+    background-color: #C6F4F4;
+    border: solid #293333 1px;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    padding: 25px;
+}
+
+.fieldset_auto_width{
+    display: inline-block;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+    background-color: black;
+    color: white;
+}
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th {
+    background-color: red;
+    color:black;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: navy;
+    color: white;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

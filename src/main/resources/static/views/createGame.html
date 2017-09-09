@@ -1,0 +1,32 @@
+<title> Create Game </title>
+
+<div class="container" ng-controller="createGameCtrl">
+    
+    <form>
+            <h2>Create Game</h2>
+            <hr>
+            <fieldset class="fieldset_auto_width">
+            <div>
+                <label>Enter a Game Name:</label>
+                <input ng-model="game.name" id="GameName" placeholder="Name...">
+            </div>
+            <div>
+                <label>Enter a Password For a Private Game:</label>
+                <input ng-model="game.password" id="GamePassword" placeholder="Private Game Password...">
+            </div>
+            <br>
+            <div>
+                <label>Number of Players:</label> 
+                <select ng-model="game.selectedNumbPlayers" ng-init="game.selectedNumbPlayers = numPlayers[0]" ng-options="item for item in numPlayers" ></select>
+            </div>
+            <br>
+            <div>
+                <label>Player Turn Time: </label> 
+                <select ng-model="game.timer" ng-init="game.timer = timerList[0]" ng-options="item for item in timerList" ></select>
+            </div>
+            <br>
+            <button type="submit" ng-click="createGame(game)" id="submit">Submit</button>
+            <button type="submit" ng-click="joinGame()" id="submit">Cancel</button>
+        </fieldset>
+    </form>
+</div>

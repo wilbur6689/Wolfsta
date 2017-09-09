@@ -1,0 +1,30 @@
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container" ng-controller="friendListCtrl">
+    <div class="row">
+        <h2>This is the friends list</h2>
+        <div class="col-md-12">
+            <div ng-app="wolfsta" ng-controller="friendListCtrl"> 
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Rank</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="friend in friend_list">
+                            <td>{{friend.avatar}}</td>
+                            <td>{{friend.username}}</td>
+                            <td>{{friend.rank}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 hand" ng-click="joinGame()">
+        <h3>Return Home</h3>
+    </div>
+</div>

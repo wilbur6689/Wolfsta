@@ -1,0 +1,31 @@
+<!--Pulling Awesome Font -->
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<div class="container" ng-controller="joinCtrl">
+    <div class="row"> 
+        <div class="col-md-12">       
+            <h2>Welcome To Wolfsta</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Current Games:</h4>
+            <div class="floLeft">        
+                <select size="5" id="joinList" ng-model="selectedGame">
+                    <option  ng-repeat="game in gamesList | filter: filter" ng-selected="gamesList[0]">{{game.name}}</option>
+                </select>
+            </div>
+            <div class="floRight">
+                <h4>Game:</h4>
+                <select name="filter" id="filter" ng-model="filter" ng-init="filter = gametypes[0]" ng-options="type for type in gametypes" ng-change="changeFilter()"></select>
+                <br>
+                <input type="text" value="{{selectedGame}}" class="textBox"><br>
+                <input type="text" placeholder="   Password..." class="textBox"><br>
+                <br>
+                <br>
+                <button type="button" ng-click="joinLobby(user)">Join Game</button>
+                <button type="button" ng-click="createGame()">Create Game</button>
+            </div>
+        </div>
+    </div>
+</div>
