@@ -3,9 +3,11 @@ package com.teamwolf.data;
 import com.teamwolf.beans.*;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.*;
+import org.springframework.transaction.annotation.*;
 
 import java.util.*;
 
+@Transactional
 @Repository
 public interface FriendLookUpData extends JpaRepository<FriendLookUp,Integer>
 {

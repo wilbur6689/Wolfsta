@@ -7,6 +7,6 @@ import org.springframework.transaction.annotation.*;
 
 @Transactional
 @Repository
-public interface SessionData extends JpaRepository<UserSession,String>
+public interface PlayerData extends JpaRepository<Player,Integer>
 {
 }
