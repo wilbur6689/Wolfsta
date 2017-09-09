@@ -2,7 +2,7 @@ package com.teamwolf.beans;
 
 
 import javax.persistence.*;
-import java.io.*;
+
 import java.sql.*;
 
 @Entity
@@ -14,13 +14,13 @@ public class Game
     private String gamePassword;
     private int players = 0;
     private int turn = 0;
-    private int round; //round number (used for determining who dealer is
-    //TODO time limit
-    //private int timeLimit = 0;
+    private int round; //round number (used for determining who dealer is)
+    private int timeLimit = 0;
     private Timestamp gameStartDate;
     private Timestamp gameResolved;
-    private int gameWon = 0;//TODO what are these for?
+    private int gameWon = 0;
     private int gameLost = 0;
+    private int gameState;
     // protected Logger log = Logger.getRootLogger();
 
     /**
@@ -123,4 +123,19 @@ public class Game
         this.gameResolved = gameResolved;
     }
 
+    public int getTimeLimit() {
+        return timeLimit;
+    }
+
+    public void setTimeLimit(int timeLimit) {
+        this.timeLimit = timeLimit;
+    }
+
+    public int getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(int gameState) {
+        this.gameState = gameState;
+    }
 }// public class Game

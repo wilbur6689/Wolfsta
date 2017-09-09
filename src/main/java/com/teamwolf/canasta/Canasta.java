@@ -726,9 +726,7 @@ public class Canasta {
     }
 
     /**
-     * TODO
      * ends the current round and checks for win
-     *
      * @param g the game
      */
     public void endRound(Game g) {
@@ -894,6 +892,7 @@ public class Canasta {
         }
         gDao.update(g);
     }
+
 
     public CardLookup getTop(Game g) {
         Map<String, Object> topConstraints = new HashMap<>();
