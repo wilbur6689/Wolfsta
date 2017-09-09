@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserController extends BaseController
 {
     @Autowired
-    public void setUserLogic(@Qualifier("userImpl") UserLogic userLogic)
+    public void setUserLogic( UserLogic userLogic)
     {
         this.userLogic = userLogic;
     }

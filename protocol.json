@@ -88,7 +88,8 @@
             "url":"/games/new"
         },
         {
-            "url":"/games"
+            "url":"/games",
+            "games":"literally an array of games"
         }
     ],
     "gamelogic":

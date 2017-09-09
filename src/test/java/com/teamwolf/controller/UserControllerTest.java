@@ -1,13 +1,17 @@
 package com.teamwolf.controller;
 
 import com.teamwolf.beans.*;
+import com.teamwolf.controller.*;
 import com.teamwolf.data.*;
+import com.teamwolf.logic.*;
+import com.teamwolf.logic.Impl.*;
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.boot.test.autoconfigure.orm.jpa.*;
 import org.springframework.boot.test.context.*;
+import org.springframework.context.annotation.*;
 import org.springframework.test.context.junit4.*;
 import org.springframework.test.web.servlet.*;
 import org.springframework.test.web.servlet.setup.*;
@@ -32,6 +36,24 @@ public class UserControllerTest
 //    @Mock
 //    private dao;
 
+    @TestConfiguration
+    static class TestConfig
+    {
+        @Bean
+        public UserController userController()
+        {
+            return new UserController();
+        }
+
+        @Bean
+        public UserLogic userLogic()
+        {
+            return new UserImpl();
+        }
+    }
+
+    @Autowired
+    private UserLogic userLogic;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -79,7 +101,18 @@ public class UserControllerTest
         mockMvc.perform(get("/services/user/1"))
                .andExpect(status().isOk())
                .andExpect(jsonPath("$.success", is(true)))
-               .andExpect(jsonPath("$.username", is("cJohnson")))
+               .andExpect(jsonPath("$.user.username", is("cJohnson")))
+        ;
+
+    }
+
+    @Test
+    public void successFalseWithNoValitdUser() throws Exception
+    {
+        mockMvc.perform(get("/services/user/3"))
+               .andExpect(status().isOk())
+               .andExpect(jsonPath("$.success", is(false)))
+
         ;
 
     }
