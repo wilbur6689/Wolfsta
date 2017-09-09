@@ -191,4 +191,17 @@ public enum Card {
             return false;
         }
     }
+
+    /**
+     * checks if card is wild
+     * @return true if wild
+     */
+    public boolean isWild() {
+        if (this.getRank() == 2 || this.getRank() == 14){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
